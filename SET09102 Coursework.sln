@@ -5,6 +5,11 @@ VisualStudioVersion = 16.0.30406.217
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SET09102 Coursework", "SET09102 Coursework\SET09102 Coursework.csproj", "{4D026E1F-CB36-40DE-899C-81ECF1F928D2}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{50EE6216-8A42-4135-BBBE-E2EFF1003AC4}"
+	ProjectSection(SolutionItems) = preProject
+		\\napier-mail.napier.ac.uk\students\School of Computing\User Data\40397559\My Profile\Downloads\textwords.csv = \\napier-mail.napier.ac.uk\students\School of Computing\User Data\40397559\My Profile\Downloads\textwords.csv
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
