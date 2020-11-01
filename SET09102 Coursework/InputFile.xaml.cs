@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace SET09102_Coursework
 {
     /// <summary>
-    /// Interaction logic for Tweets.xaml
+    /// Interaction logic for InputFile.xaml
     /// </summary>
-    public partial class Tweets : Window
+    public partial class InputFile : Window
     {
-        public Tweets()
+        public InputFile()
         {
             InitializeComponent();
         }
