@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace SET09102_Coursework
 {
     /// <summary>
-    /// Interaction logic for InputFile.xaml
+    /// Interaction logic for ImportedData.xaml
     /// </summary>
-    public partial class InputFile : Window
+    public partial class ImportedData : Window
     {
-        public InputFile()
+        public ImportedData()
         {
             InitializeComponent();
         }

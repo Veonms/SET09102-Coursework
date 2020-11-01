@@ -24,5 +24,22 @@ namespace SET09102_Coursework
         {
             InitializeComponent();
         }
+
+        private void btn_Confirm_Click(object sender, RoutedEventArgs e)
+        {
+            if (String.IsNullOrEmpty(txtbox_File_Name.Text))
+            {
+                Display display = new Display();
+                display.Show();
+                this.Close();
+            }
+            else
+            {
+                ImportedData impData = new ImportedData();
+                impData.Show();
+                this.Close();
+            }
+
+        }
     }
 }
