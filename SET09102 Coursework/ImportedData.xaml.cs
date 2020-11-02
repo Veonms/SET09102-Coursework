@@ -22,6 +22,7 @@ namespace SET09102_Coursework
         public ImportedData()
         {
             InitializeComponent();
+
         }
     }
 }
