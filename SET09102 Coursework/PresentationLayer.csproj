@@ -108,11 +108,5 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\BusinessLayer\BusinessLayer.csproj">
-      <Project>{801cedb0-fc49-4ba9-ad30-f354e08d6df8}</Project>
-      <Name>BusinessLayer</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

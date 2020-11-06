@@ -41,5 +41,17 @@ namespace SET09102_Coursework
             }
 
         }
+
+        private void chkBox_Import_Checked(object sender, RoutedEventArgs e)
+        {
+            txtbox_File_Name.Visibility = Visibility.Visible;
+            lbl_File_Name.Visibility = Visibility.Visible;
+        }
+        private void chkBox_Import_Unchecked(object sender, RoutedEventArgs e)
+        {
+            txtbox_File_Name.Visibility = Visibility.Collapsed;
+            lbl_File_Name.Visibility = Visibility.Collapsed;
+        }
+
     }
 }
