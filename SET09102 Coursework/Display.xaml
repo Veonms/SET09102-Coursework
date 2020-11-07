@@ -7,6 +7,16 @@
         mc:Ignorable="d"
         Title="Display" Height="450" Width="800">
     <Grid>
-        
+        <Label Content="messageType" HorizontalAlignment="Left" Margin="39,29,0,0" VerticalAlignment="Top" Height="47" Width="164" FontSize="24" FontWeight="Bold"/>
+        <Label Content="messageHeader" HorizontalAlignment="Left" Margin="39,81,0,0" VerticalAlignment="Top" Width="152" FontSize="18"/>
+        <TextBlock HorizontalAlignment="Left" Margin="39,153,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="187" Width="230"/>
+        <Label Content="Message Body:" HorizontalAlignment="Left" Margin="39,124,0,0" VerticalAlignment="Top" Width="118" FontSize="14" FontWeight="Bold"/>
+        <Button Content="Make Changes" HorizontalAlignment="Left" Margin="197,356,0,0" VerticalAlignment="Top" Width="103" Height="32" FontSize="14"/>
+        <Button Content="Export" HorizontalAlignment="Left" Margin="461,356,0,0" VerticalAlignment="Top" Width="103" Height="32" FontSize="14"/>
+        <TextBlock HorizontalAlignment="Left" Margin="461,114,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="79" Width="269"/>
+        <Label x:Name="txtblk_URL" Content="URLs Quarantined/Hashtags" HorizontalAlignment="Left" Margin="461,81,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
+        <Label x:Name="txtblk_URL_Copy" Content="Significant Incident Report/Mentions" HorizontalAlignment="Left" Margin="461,198,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
+        <TextBlock HorizontalAlignment="Left" Margin="461,232,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="79" Width="269"/>
+
     </Grid>
 </Window>
