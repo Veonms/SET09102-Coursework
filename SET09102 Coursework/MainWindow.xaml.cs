@@ -51,6 +51,7 @@ namespace SET09102_Coursework
         {
             txtbox_File_Name.Visibility = Visibility.Collapsed;
             lbl_File_Name.Visibility = Visibility.Collapsed;
+            txtbox_File_Name.Clear();
         }
 
     }
