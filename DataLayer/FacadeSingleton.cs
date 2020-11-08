@@ -16,13 +16,21 @@ namespace DataLayer
                 reference = new FacadeSingleton();
             return reference;
         }
-
+        
         // Used for persistance
         private AbbriviationsLoad al = new AbbriviationsLoad();
+        private MessagesHandler ml = new MessagesHandler();
 
         public void Load()
         {
+            ml.Load();
             al.Load();
         }
+        public void Save()
+        {
+            ml.Add();
+        }
+
+
     }
 }

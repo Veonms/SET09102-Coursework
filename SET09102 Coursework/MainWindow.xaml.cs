@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BusinessLayer;
 
 namespace SET09102_Coursework
 {
@@ -20,6 +21,8 @@ namespace SET09102_Coursework
     /// </summary>
     public partial class MainWindow : Window
     {
+        private MessageFacade messageService = new MessageFacade();
+
         public MainWindow()
         {
             InitializeComponent();

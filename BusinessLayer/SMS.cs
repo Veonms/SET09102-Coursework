@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DataLayer
+namespace BusinessLayer
 {
-    class MessagesLoad
+    class SMS
     {
     }
 }
