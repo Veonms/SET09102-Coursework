@@ -12,10 +12,11 @@
         <TextBox x:Name="txtbox_Message_Header" HorizontalAlignment="Left" Height="26" Margin="321,115,0,0" TextWrapping="Wrap" Text="Enter Message Header" VerticalAlignment="Top" Width="379"/>
         <TextBox x:Name="txtbox_Message_Body" HorizontalAlignment="Left" Height="90" Margin="321,166,0,0" TextWrapping="Wrap" Text="Enter Message Body" VerticalAlignment="Top" Width="379"/>
         <Label x:Name="Header" Content="Napier Bank Messaging" HorizontalAlignment="Left" Margin="257,40,0,0" VerticalAlignment="Top" Height="46" Width="277" FontWeight="Bold" FontSize="24"/>
-        <Button x:Name="btn_Confirm" Content="Confirm" HorizontalAlignment="Left" Margin="159,358,0,0" VerticalAlignment="Top" Width="100" Height="30" Click="btn_Confirm_Click"/>
+        <Button x:Name="btn_Confirm" Content="Add Message" HorizontalAlignment="Left" Margin="159,358,0,0" VerticalAlignment="Top" Width="100" Height="30" Click="btn_Confirm_Click"/>
         <TextBox x:Name="txtbox_File_Name" Visibility="Collapsed"  HorizontalAlignment="Left" Height="23" Margin="321,300,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="379"/>
         <Label x:Name="lbl_File_Name" Content="File Name" HorizontalAlignment="Left" Margin="159,300,0,0" VerticalAlignment="Top" Width="63" Visibility="Collapsed"/>
         <CheckBox x:Name="chkBox_Import" Content="Tick if importing from file" HorizontalAlignment="Left" Margin="257,270,0,0" VerticalAlignment="Top" Checked="chkBox_Import_Checked" Unchecked="chkBox_Import_Unchecked"/>
+        <Button x:Name="btn_MessageView" Content="View Messages" HorizontalAlignment="Left" Margin="488,358,0,0" VerticalAlignment="Top" Width="100" Height="30" Click="btn_MessagView_Click"/>
 
     </Grid>
 </Window>

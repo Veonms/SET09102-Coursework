@@ -27,7 +27,7 @@ namespace SET09102_Coursework
 
         private void btn_Confirm_Click(object sender, RoutedEventArgs e)
         {
-            if (String.IsNullOrEmpty(txtbox_File_Name.Text))
+            if (!(String.IsNullOrEmpty(txtbox_File_Name.Text)))
             {
                 Display display = new Display();
                 display.Show();
@@ -35,9 +35,7 @@ namespace SET09102_Coursework
             }
             else
             {
-                ImportedData impData = new ImportedData();
-                impData.Show();
-                this.Close();
+                //
             }
 
         }
@@ -46,13 +44,22 @@ namespace SET09102_Coursework
         {
             txtbox_File_Name.Visibility = Visibility.Visible;
             lbl_File_Name.Visibility = Visibility.Visible;
+            btn_Confirm.Content = "Import Data";
         }
         private void chkBox_Import_Unchecked(object sender, RoutedEventArgs e)
         {
             txtbox_File_Name.Visibility = Visibility.Collapsed;
             lbl_File_Name.Visibility = Visibility.Collapsed;
             txtbox_File_Name.Clear();
+            btn_Confirm.Content = "Add Message";
         }
 
+        private void btn_MessagView_Click(object sender, RoutedEventArgs e)
+        {
+            DisplayLists displayLists = new DisplayLists();
+            displayLists.Show();
+            this.Close();
+
+        }
     }
 }

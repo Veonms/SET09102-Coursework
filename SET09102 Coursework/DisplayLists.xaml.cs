@@ -15,14 +15,13 @@ using System.Windows.Shapes;
 namespace SET09102_Coursework
 {
     /// <summary>
-    /// Interaction logic for ImportedData.xaml
+    /// Interaction logic for DisplayLists.xaml
     /// </summary>
-    public partial class ImportedData : Window
+    public partial class DisplayLists : Window
     {
-        public ImportedData()
+        public DisplayLists()
         {
             InitializeComponent();
-
         }
     }
 }
