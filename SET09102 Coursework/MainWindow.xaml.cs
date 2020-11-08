@@ -56,6 +56,7 @@ namespace SET09102_Coursework
 
         private void btn_MessagView_Click(object sender, RoutedEventArgs e)
         {
+
             DisplayLists displayLists = new DisplayLists();
             displayLists.Show();
             this.Close();

@@ -10,9 +10,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		SET09102 Coursework\textwords.csv = SET09102 Coursework\textwords.csv
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLayer", "BusinessLayer\BusinessLayer.csproj", "{801CEDB0-FC49-4BA9-AD30-F354E08D6DF8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessLayer", "BusinessLayer\BusinessLayer.csproj", "{801CEDB0-FC49-4BA9-AD30-F354E08D6DF8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataLayer", "DataLayer\DataLayer.csproj", "{2FBED039-4570-48B7-B49C-AE82A0895608}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataLayer", "DataLayer\DataLayer.csproj", "{2FBED039-4570-48B7-B49C-AE82A0895608}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
