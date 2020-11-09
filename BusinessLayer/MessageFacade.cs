@@ -7,6 +7,43 @@ namespace BusinessLayer
 {
     public class MessageFacade
     {
+        public Boolean AddMessage(string header, string body)
+        {
+            try
+            {
+                if (header.StartsWith("S") &&
+                    !SMS.GetText().ContainsKey(header) &&
+                    header.Length == 10)
+                {
+                    SMS s = new SMS(header, body);
+                    return true;
+                }
+                if (header.StartsWith("E") &&
+                    !Email.GetEmails().ContainsKey(header) &&
+                    header.Length == 10)
+                {
+                    Email e = new Email(header, body);
+                    return true;
+                }
+                if (header.StartsWith("T") && 
+                    !Tweet.GetTweet().ContainsKey(header) && 
+                    header.Length == 10)
+                {
+                    Tweet t = new Tweet(header, body);
+                    return true;
+                }
+                else
+                {
+                    throw new Exception();
+                }
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+        }
+
         public Boolean SaveMessages()
         {
             try

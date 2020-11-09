@@ -42,7 +42,14 @@ namespace SET09102_Coursework
             }
             else
             {
-                //
+                if (messageService.AddMessage(txtbox_Message_Header.Text, txtbox_Message_Body.Text))
+                {
+                    MessageBox.Show("Works");
+                }
+                else
+                {
+
+                }
             }
 
         }
