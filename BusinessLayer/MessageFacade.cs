@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using DataLayer;
@@ -7,6 +8,17 @@ namespace BusinessLayer
 {
     public class MessageFacade
     {
+        public ArrayList DisplayData()
+        {
+            ArrayList messages = new ArrayList();
+
+            messages.Add(SMS.GetText().Values);
+            messages.Add(Tweet.GetTweet().Values);
+            messages.Add(Email.GetEmails().Values);
+
+            return messages;
+        }
+
         public Boolean AddMessage(string header, string body)
         {
             try

@@ -30,7 +30,7 @@ namespace SET09102_Coursework
 
         private void btn_Confirm_Click(object sender, RoutedEventArgs e)
         {
-            if (!(String.IsNullOrEmpty(txtbox_File_Name.Text)))
+            if ((bool)chkBox_Import.IsChecked)
             {
                 Boolean success = messageService.Load(txtbox_File_Name.Text);
                 if (success)
@@ -44,11 +44,11 @@ namespace SET09102_Coursework
             {
                 if (messageService.AddMessage(txtbox_Message_Header.Text, txtbox_Message_Body.Text))
                 {
-                    MessageBox.Show("Works");
+                    MessageBox.Show("Message Added");
                 }
                 else
                 {
-
+                    MessageBox.Show("Error: Try again");
                 }
             }
 
@@ -71,8 +71,8 @@ namespace SET09102_Coursework
         private void btn_MessagView_Click(object sender, RoutedEventArgs e)
         {
 
-            DisplayLists displayLists = new DisplayLists();
-            displayLists.Show();
+            Display display = new Display();
+            display.Show();
             this.Close();
 
         }
