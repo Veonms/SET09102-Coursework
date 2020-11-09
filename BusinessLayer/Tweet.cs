@@ -14,7 +14,7 @@ namespace BusinessLayer
             return tweets;
         }
 
-        public Tweet(string header, string body) // Creates Tweet with attributes
+        public Tweet(string header, string body) : base(header, body) // Creates Tweet with attributes
         {
             tweets.Add(header, this);
         }

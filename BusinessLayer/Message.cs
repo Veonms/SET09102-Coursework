@@ -11,21 +11,21 @@ namespace BusinessLayer
 
         public Message(string header, string body) // Creates message with attributes
         {
-            messHeader = header;
-            messBody = body;
+            Header = header;
+            Body = body;
         }
 
         // Getters and setters
-        public string messHeader
+        public string Header
         {
             get { return header; }
-            set { messHeader = value; }
+            set { header = value; }
         }
 
-        public string messBody
+        public string Body
         {
             get { return body; }
-            set { messBody = value; }
+            set { body = value; }
         }
     }
 }
