@@ -22,11 +22,12 @@ namespace BusinessLayer
             }
         }
 
-        public void Load()
+        public Boolean Load(string filename)
         {
             // Allows acceess to DataLayer
             FacadeSingleton fs = FacadeSingleton.GetInstance();
-            fs.Load();
+            Boolean success = fs.Load(filename);
+            return success;
         }
 
         public void Save()

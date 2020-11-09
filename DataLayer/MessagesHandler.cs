@@ -1,37 +1,43 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Runtime.CompilerServices;
-using System.Text;
 
 namespace DataLayer
 {
     class MessagesHandler
     {
-        public void Load()
+        public Boolean Load(string filename)
         {
-            string filePath = System.IO.Path.GetFullPath("textwords.csv");
-            using (var r = new StreamReader(filePath))
+            string path = "./Data/" + filename;
+            try
             {
-                while (!r.EndOfStream)
+                using (var r = new StreamReader(@path))
                 {
-                    try
+                    while (!r.EndOfStream)
                     {
-                        var line = r.ReadLine();
-                        string[] values = line.Split(','); // Removes comma and appends to array
+                        try
+                        {
+                            var line = r.ReadLine();
+                            string[] values = line.Split(','); // Removes comma and appends to array
+                        }
+                        catch (Exception)
+                        {
+                            continue;
+                        }
                     }
-                    catch (Exception)
-                    {
-                        continue;
-                    }
-                }
-            }// StreamReader is closed and flushed even with exception
+                }// StreamReader is closed and flushed even with exception
+            }
+            catch(Exception)
+            {
+                //Display error
+                return false;
+            }
+            return true;
         }
 
         public void Add()
         {
             // Opens file using StreamWriter
-            using (var w = new StreamWriter(@"Output\Messages.csv"))
+            using (var w = new StreamWriter(@"./Data\Messages.csv"))
             {
                 //string line = Staff.ReturnStaff();
                 string line = "";

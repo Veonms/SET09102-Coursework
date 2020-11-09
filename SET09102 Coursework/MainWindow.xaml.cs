@@ -32,9 +32,13 @@ namespace SET09102_Coursework
         {
             if (!(String.IsNullOrEmpty(txtbox_File_Name.Text)))
             {
-                Display display = new Display();
-                display.Show();
-                this.Close();
+                Boolean success = messageService.Load(txtbox_File_Name.Text);
+                if (success)
+                {
+                    Display display = new Display();
+                    display.Show();
+                    this.Close();
+                }
             }
             else
             {

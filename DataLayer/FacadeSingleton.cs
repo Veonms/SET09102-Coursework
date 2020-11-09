@@ -19,16 +19,17 @@ namespace DataLayer
         
         // Used for persistance
         private AbbriviationsLoad al = new AbbriviationsLoad();
-        private MessagesHandler ml = new MessagesHandler();
+        private MessagesHandler mh = new MessagesHandler();
 
-        public void Load()
+        public Boolean Load(string filename)
         {
-            ml.Load();
-            al.Load();
+            Boolean success = mh.Load(filename);
+            return success;
+            //al.Load();
         }
         public void Save()
         {
-            ml.Add();
+            mh.Add();
         }
 
 
