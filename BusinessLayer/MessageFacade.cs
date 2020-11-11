@@ -9,6 +9,11 @@ namespace BusinessLayer
 {
     public class MessageFacade
     {
+        public List<string> GetUrl()
+        {
+            List<string> urls = new List<string>();
+            return urls;
+        }
         public List<string> DisplayData()
         {
             List<string> messages = new List<string>();

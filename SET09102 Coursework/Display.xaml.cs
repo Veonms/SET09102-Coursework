@@ -39,6 +39,8 @@ namespace SET09102_Coursework
                     lbl_messageType.Content = "SMS Text";
                     lbl_messageHeader.Content = messages[index];
                     txtblk_body.Text = messages[index+1];
+                    txtblk_SIGMen.Visibility = Visibility.Hidden;
+                    txtblk_URLHash.Visibility = Visibility.Hidden;
                     lbl_URLHash.Visibility = Visibility.Hidden;
                     lbl_SIRMen.Visibility = Visibility.Hidden;
                 }
