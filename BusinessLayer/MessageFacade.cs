@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using DataLayer;
 
@@ -8,14 +9,25 @@ namespace BusinessLayer
 {
     public class MessageFacade
     {
-        public ArrayList DisplayData()
+        public List<string> DisplayData()
         {
-            ArrayList messages = new ArrayList();
+            List<string> messages = new List<string>();
 
-            messages.Add(SMS.GetText().Values);
-            messages.Add(Tweet.GetTweet().Values);
-            messages.Add(Email.GetEmails().Values);
-
+            foreach (KeyValuePair<string,SMS> pair in SMS.GetText())
+            {
+                messages.Add(pair.Value.Header);
+                messages.Add(pair.Value.Body);
+            }
+            foreach (KeyValuePair<string,Tweet> pair in Tweet.GetTweet())
+            {
+                messages.Add(pair.Value.Header);
+                messages.Add(pair.Value.Body);
+            }
+            foreach (KeyValuePair<string,Email> pair in Email.GetEmails())
+            {
+                messages.Add(pair.Value.Header);
+                messages.Add(pair.Value.Body);
+            }
             return messages;
         }
 

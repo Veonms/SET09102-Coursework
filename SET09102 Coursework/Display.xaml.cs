@@ -22,16 +22,50 @@ namespace SET09102_Coursework
     public partial class Display : Window
     {
         private MessageFacade messageService = new MessageFacade();
+        int index = 0;
         public Display()
         {
             InitializeComponent();
-            changes(0);
+            changes();
         }
         
-        public void changes(int index)
+        public void changes()
         {
-            ArrayList messages = messageService.DisplayData();
-            var tst = messages[index];
+            try
+            {
+                List<string> messages = messageService.DisplayData();
+                if (messages[index].StartsWith("S"))
+                {
+                    lbl_messageType.Content = "SMS Text";
+                    lbl_messageHeader.Content = messages[index];
+                    txtblk_body.Text = messages[index+1];
+                    lbl_URLHash.Visibility = Visibility.Hidden;
+                    lbl_SIRMen.Visibility = Visibility.Hidden;
+                }
+                if (messages[index].StartsWith("E"))
+                {
+                    lbl_messageType.Content = "Email";
+                    lbl_messageHeader.Content = messages[index];
+                    txtblk_body.Text = messages[index + 1];
+                    lbl_URLHash.Content = "URLs Quarantined";
+                    lbl_SIRMen.Content = "Significant Incedent Report";
+                }
+                if (messages[index].StartsWith("T"))
+                {
+                    lbl_messageType.Content = "Tweet";
+                    lbl_messageHeader.Content = messages[index];
+                    txtblk_body.Text = messages[index + 1];
+                    lbl_URLHash.Content = "Hashtags";
+                    lbl_SIRMen.Content = "Mentions";
+                }
+                else
+                {
+                    throw new Exception();
+                }
+            }
+            catch (Exception){
+
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
