@@ -61,7 +61,11 @@ namespace SET09102_Coursework
                     lbl_SIRMen.Content = "Mentions";
                     foreach (var v in messageService.GetHashtag(messages[index + 1]))
                     {
-                        txtblk_URLHash.Text = v;
+                        txtblk_URLHash.Text += (v + " ");
+                    }
+                    foreach (var v in messageService.GetMentions(messages[index + 1]))
+                    {
+                        txtblk_SIGMen.Text += (v + " ");
                     }
                 }
                 else

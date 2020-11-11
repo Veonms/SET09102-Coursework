@@ -9,14 +9,14 @@
     <Grid>
         <Label x:Name="lbl_messageType" Content="messageType" HorizontalAlignment="Left" Margin="39,29,0,0" VerticalAlignment="Top" Height="47" Width="164" FontSize="24" FontWeight="Bold"/>
         <Label x:Name="lbl_messageHeader" Content="messageHeader" HorizontalAlignment="Left" Margin="39,81,0,0" VerticalAlignment="Top" Width="152" FontSize="18"/>
-        <TextBlock x:Name="txtblk_body" HorizontalAlignment="Left" Margin="39,153,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="187" Width="230"/>
+        <TextBlock x:Name="txtblk_body" HorizontalAlignment="Left" Margin="39,153,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="187" Width="230"/>
         <Label Content="Message Body:" HorizontalAlignment="Left" Margin="39,124,0,0" VerticalAlignment="Top" Width="118" FontSize="14" FontWeight="Bold"/>
         <Button x:Name="btn_NextMssage" Content="Next Message" HorizontalAlignment="Left" Margin="341,356,0,0" VerticalAlignment="Top" Width="103" Height="32" FontSize="14" Click="btn_NextMssage_Click"/>
         <Button Content="Export" HorizontalAlignment="Left" Margin="554,356,0,0" VerticalAlignment="Top" Width="103" Height="32" FontSize="14" Click="Button_Click_1"/>
-        <TextBlock x:Name="txtblk_URLHash" HorizontalAlignment="Left" Margin="461,114,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="79" Width="269"/>
+        <TextBlock x:Name="txtblk_URLHash" HorizontalAlignment="Left" Margin="461,114,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="79" Width="269"/>
         <Label x:Name="lbl_URLHash" Content="URLs Quarantined/Hashtags" HorizontalAlignment="Left" Margin="461,81,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
         <Label x:Name="lbl_SIRMen" Content="Significant Incident Report/Mentions" HorizontalAlignment="Left" Margin="461,198,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
-        <TextBlock x:Name="txtblk_SIGMen" HorizontalAlignment="Left" Margin="461,232,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="79" Width="269"/>
+        <TextBlock x:Name="txtblk_SIGMen" HorizontalAlignment="Left" Margin="461,232,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="79" Width="269"/>
         <Button Content="Main Menu" HorizontalAlignment="Left" Margin="100,356,0,0" VerticalAlignment="Top" Width="103" Height="32" Click="Button_Click" FontSize="14"/>
 
     </Grid>

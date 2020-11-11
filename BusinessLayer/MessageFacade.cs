@@ -15,6 +15,24 @@ namespace BusinessLayer
             return urls;
         }
 
+        public List<string> GetMentions(string body)
+        {
+            List<string> mentions = new List<string>();
+            string[] values = body.Split(null);
+
+            foreach (string s in values)
+            {
+                if (s.StartsWith("@"))
+                {
+                    mentions.Add(s);
+                }
+
+                else
+                    continue;
+            }
+            return mentions;
+        }
+
         public List<string> GetHashtag(string body)
         {
             List<string> hashtag = new List<string>();
@@ -23,7 +41,10 @@ namespace BusinessLayer
             foreach (string s in values)
             {
                 if (s.StartsWith("#"))
+                {
                     hashtag.Add(s);
+                }
+
                 else
                     continue;
             }
