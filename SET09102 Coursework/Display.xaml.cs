@@ -81,5 +81,11 @@ namespace SET09102_Coursework
         {
 
         }
+
+        private void btn_NextMssage_Click(object sender, RoutedEventArgs e)
+        {
+            index += 2;
+            changes();
+        }
     }
 }
