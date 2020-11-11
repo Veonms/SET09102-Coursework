@@ -14,6 +14,22 @@ namespace BusinessLayer
             List<string> urls = new List<string>();
             return urls;
         }
+
+        public List<string> GetHashtag(string body)
+        {
+            List<string> hashtag = new List<string>();
+            string[] values = body.Split(null);
+
+            foreach (string s in values)
+            {
+                if (s.StartsWith("#"))
+                    hashtag.Add(s);
+                else
+                    continue;
+            }
+            return hashtag;
+        }
+
         public List<string> DisplayData()
         {
             List<string> messages = new List<string>();

@@ -59,6 +59,10 @@ namespace SET09102_Coursework
                     txtblk_body.Text = messages[index + 1];
                     lbl_URLHash.Content = "Hashtags";
                     lbl_SIRMen.Content = "Mentions";
+                    foreach (var v in messageService.GetHashtag(messages[index + 1]))
+                    {
+                        txtblk_URLHash.Text = v;
+                    }
                 }
                 else
                 {
