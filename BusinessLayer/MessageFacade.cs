@@ -9,10 +9,33 @@ namespace BusinessLayer
 {
     public class MessageFacade
     {
-        public List<string> GetUrl()
+        public List<string> GetUrl(string body)
         {
             List<string> urls = new List<string>();
+
+            string[] values = body.Split(null);
+
+            foreach (string s in values)
+            {
+                if (s.StartsWith("http:") || s.StartsWith("https:"))
+                {
+                    urls.Add(s);
+                }
+
+                else
+                    continue;
+            }
+
             return urls;
+        }
+
+        public List<string> GetSIR(string body)
+        {
+            List<string> SIR = new List<string>();
+
+            //
+
+            return SIR;
         }
 
         public List<string> GetMentions(string body)

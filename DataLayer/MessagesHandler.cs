@@ -7,7 +7,7 @@ namespace DataLayer
     {
         public Boolean Load(string filename)
         {
-            string path = "./Data/" + filename;
+            string path = "./SET09102 Coursework/" + filename;
             try
             {
                 using (var r = new StreamReader(@path))
