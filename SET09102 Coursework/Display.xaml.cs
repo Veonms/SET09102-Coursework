@@ -36,6 +36,8 @@ namespace SET09102_Coursework
                 List<string> messages = messageService.DisplayData();
                 if (messages[index].StartsWith("S"))
                 {
+                    txtblk_SIGMen.Text = null;
+                    txtblk_URLHash.Text = null;
                     lbl_messageType.Content = "SMS Text";
                     lbl_messageHeader.Content = messages[index];
                     txtblk_body.Text = messages[index+1];
@@ -46,6 +48,12 @@ namespace SET09102_Coursework
                 }
                 if (messages[index].StartsWith("E"))
                 {
+                    txtblk_SIGMen.Text = null;
+                    txtblk_URLHash.Text = null;
+                    txtblk_SIGMen.Visibility = Visibility.Visible;
+                    txtblk_URLHash.Visibility = Visibility.Visible;
+                    lbl_URLHash.Visibility = Visibility.Visible;
+                    lbl_SIRMen.Visibility = Visibility.Visible;
                     lbl_messageType.Content = "Email";
                     lbl_messageHeader.Content = messages[index];
                     txtblk_body.Text = messages[index + 1];
@@ -62,6 +70,12 @@ namespace SET09102_Coursework
                 }
                 if (messages[index].StartsWith("T"))
                 {
+                    txtblk_SIGMen.Text = null;
+                    txtblk_URLHash.Text = null;
+                    txtblk_SIGMen.Visibility = Visibility.Visible;
+                    txtblk_URLHash.Visibility = Visibility.Visible;
+                    lbl_URLHash.Visibility = Visibility.Visible;
+                    lbl_SIRMen.Visibility = Visibility.Visible;
                     lbl_messageType.Content = "Tweet";
                     lbl_messageHeader.Content = messages[index];
                     txtblk_body.Text = messages[index + 1];
