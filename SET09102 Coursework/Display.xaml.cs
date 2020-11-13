@@ -56,10 +56,7 @@ namespace SET09102_Coursework
                     txtblk_body.Text = messageService.checkURL(messages[index + 1]);
                     lbl_URLHash.Content = "URLs Quarantined";
                     lbl_SIRMen.Content = "Significant Incedent Report";
-                    foreach (var v in messageService.GetSIR(messages[index + 1]))
-                    {
-                        txtblk_SIGMen.Text += (v + " ");
-                    }
+                    txtblk_SIGMen.Text = messageService.GetSIR(messages[index + 1]);
                     foreach (var v in messageService.GetUrl(messages[index + 1]))
                     {
                         txtblk_URLHash.Text += (v + " ");

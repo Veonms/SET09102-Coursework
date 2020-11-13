@@ -9,6 +9,40 @@ namespace BusinessLayer
 {
     public class MessageFacade
     {
+        public string GetSIR(string body)
+        {
+            string SIR = "";
+            string[] values = body.Split(null);
+
+            if (values.Contains("SIR"))
+            {
+                for (int i = 0; i < values.Length-1; i++)
+                {
+                    if (values[i] == "Sort" && 
+                        values[i+1] == "Code")
+                    {
+                        SIR += "Sort Code: " + values[i+2];
+                    }
+
+                    else
+                        continue;
+                }
+                for (int i = 0; i < values.Length - 1; i++)
+                {
+                    if (values[i] == "Nature" &&
+                        values[i + 1] == "of" &&
+                        values[i+2] == "Incident")
+                    {
+                        SIR += "\nNature of Incident: " + values[i + 3];
+                    }
+
+                    else
+                        continue;
+                }
+            }
+
+            return SIR;
+        }
         public string checkURL(string body)
         {
             string newBody = "";
@@ -46,15 +80,6 @@ namespace BusinessLayer
             }
 
             return urls;
-        }
-
-        public List<string> GetSIR(string body)
-        {
-            List<string> SIR = new List<string>();
-
-            //
-
-            return SIR;
         }
 
         public List<string> GetMentions(string body)
