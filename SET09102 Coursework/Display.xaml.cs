@@ -16,9 +16,6 @@ using BusinessLayer;
 
 namespace SET09102_Coursework
 {
-    /// <summary>
-    /// Interaction logic for Display.xaml
-    /// </summary>
     public partial class Display : Window
     {
         private MessageFacade messageService = new MessageFacade();
@@ -56,7 +53,7 @@ namespace SET09102_Coursework
                     lbl_SIRMen.Visibility = Visibility.Visible;
                     lbl_messageType.Content = "Email";
                     lbl_messageHeader.Content = messages[index];
-                    txtblk_body.Text = messages[index + 1];
+                    txtblk_body.Text = messageService.checkURL(messages[index + 1]);
                     lbl_URLHash.Content = "URLs Quarantined";
                     lbl_SIRMen.Content = "Significant Incedent Report";
                     foreach (var v in messageService.GetSIR(messages[index + 1]))

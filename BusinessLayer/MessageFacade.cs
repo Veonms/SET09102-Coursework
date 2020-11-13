@@ -9,6 +9,24 @@ namespace BusinessLayer
 {
     public class MessageFacade
     {
+        public string checkURL(string body)
+        {
+            string newBody = "";
+            string[] values = body.Split(null);
+
+            foreach (string s in values)
+            {
+                if (s.StartsWith("http:") || s.StartsWith("https:"))
+                {
+                    newBody += "<URL Quarantined> ";
+                }
+
+                else
+                    newBody += s + " ";
+            }
+            return newBody;
+        }
+
         public List<string> GetUrl(string body)
         {
             List<string> urls = new List<string>();
