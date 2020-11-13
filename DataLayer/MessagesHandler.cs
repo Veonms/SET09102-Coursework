@@ -1,16 +1,18 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 
 namespace DataLayer
 {
     class MessagesHandler
     {
-        public Boolean Load(string filename)
+        public List<string> Load(string filename)
         {
-            string path = "./SET09102 Coursework/" + filename;
+            List<string> data = new List<string>();
+            string path = "./Data/" + filename;
             try
             {
-                using (var r = new StreamReader(@path))
+                using (var r = new StreamReader(path))
                 {
                     while (!r.EndOfStream)
                     {
@@ -18,6 +20,10 @@ namespace DataLayer
                         {
                             var line = r.ReadLine();
                             string[] values = line.Split(','); // Removes comma and appends to array
+                            foreach (var value in values)
+                            {
+                                data.Add(value);
+                            }
                         }
                         catch (Exception)
                         {
@@ -29,9 +35,9 @@ namespace DataLayer
             catch(Exception)
             {
                 //Display error
-                return false;
+                return data;
             }
-            return true;
+            return data;
         }
 
         public void Add()

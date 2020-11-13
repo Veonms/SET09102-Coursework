@@ -192,12 +192,23 @@ namespace BusinessLayer
             }
         }
 
-        public Boolean Load(string filename)
+        public Boolean LoadMessages(string filename)
         {
             // Allows acceess to DataLayer
             FacadeSingleton fs = FacadeSingleton.GetInstance();
-            Boolean success = fs.Load(filename);
-            return success;
+            try
+            {
+                List<string> data = fs.LoadMessage(filename);
+                for (int i=0; i<data.Count-1; i += 2)
+                {
+                    AddMessage(data[i], data[i+1]);
+                }
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
         }
 
         public void Save()

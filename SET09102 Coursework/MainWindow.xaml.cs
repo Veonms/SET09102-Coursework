@@ -32,7 +32,7 @@ namespace SET09102_Coursework
         {
             if ((bool)chkBox_Import.IsChecked)
             {
-                Boolean success = messageService.Load(txtbox_File_Name.Text);
+                Boolean success = messageService.LoadMessages(txtbox_File_Name.Text);
                 if (success)
                 {
                     Display display = new Display();

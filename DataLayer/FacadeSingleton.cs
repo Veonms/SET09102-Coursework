@@ -21,11 +21,10 @@ namespace DataLayer
         private AbbriviationsLoad al = new AbbriviationsLoad();
         private MessagesHandler mh = new MessagesHandler();
 
-        public Boolean Load(string filename)
+        public List<string> LoadMessage(string filename)
         {
-            Boolean success = mh.Load(filename);
-            return success;
-            //al.Load();
+            List<string> data = mh.Load(filename);
+            return data;
         }
         public void Save()
         {
