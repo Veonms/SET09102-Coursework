@@ -181,23 +181,26 @@ namespace BusinessLayer
         {
             try
             {
-                if (true)
-                {
-                    throw new Exception();
-                }
+                FacadeSingleton fs = FacadeSingleton.GetInstance();
+
+                List<string> data = DisplayData();
+                fs.SaveMessages(data);
+
             }
             catch(Exception)
             {
-                return true;
+                return false;
             }
+            return true;
         }
 
         public Boolean LoadMessages(string filename)
         {
-            // Allows acceess to DataLayer
-            FacadeSingleton fs = FacadeSingleton.GetInstance();
             try
             {
+                // Allows acceess to DataLayer
+                FacadeSingleton fs = FacadeSingleton.GetInstance();
+
                 List<string> data = fs.LoadMessage(filename);
                 for (int i=0; i<data.Count-1; i += 2)
                 {

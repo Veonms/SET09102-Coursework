@@ -83,16 +83,25 @@ namespace SET09102_Coursework
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void btn_Main_Click(object sender, RoutedEventArgs e)
         {
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
             this.Close();
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void btn_Export_Click(object sender, RoutedEventArgs e)
         {
-
+            if (!messageService.SaveMessages())
+            {
+                MessageBox.Show("Error");
+            }
+            else
+            {
+                DisplayLists displayLists = new DisplayLists();
+                displayLists.Show();
+                this.Close();
+            }
         }
 
         private void btn_NextMssage_Click(object sender, RoutedEventArgs e)

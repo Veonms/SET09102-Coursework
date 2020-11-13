@@ -40,10 +40,11 @@ namespace DataLayer
             return data;
         }
 
-        public void Add()
+        public void Save(List<string> data)
         {
             // Opens file using StreamWriter
-            using (var w = new StreamWriter(@"./Data\Messages.csv"))
+            File.Create("output");
+            using (var w = new StreamWriter(@"output"))
             {
                 //string line = Staff.ReturnStaff();
                 string line = "";

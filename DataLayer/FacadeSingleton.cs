@@ -26,9 +26,9 @@ namespace DataLayer
             List<string> data = mh.Load(filename);
             return data;
         }
-        public void Save()
+        public void SaveMessages(List<string> data)
         {
-            mh.Add();
+            mh.Save(data);
         }
 
 
