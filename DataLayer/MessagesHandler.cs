@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 
@@ -40,17 +42,35 @@ namespace DataLayer
             return data;
         }
 
-        public void Save(List<string> data)
+        public  bool Save(ArrayList data)
         {
-            // Opens file using StreamWriter
-            File.Create("output");
-            using (var w = new StreamWriter(@"output"))
+            try
             {
-                //string line = Staff.ReturnStaff();
-                string line = "";
-                w.WriteLine(line);
-            } // StreamWriter is closed and flushed even with an exception
+                string filepath = @".\output.txt";
+
+                // Reference: https://www.youtube.com/watch?v=Ib3jnD158NI 
+                JsonSerializer js = new JsonSerializer();
+                if (File.Exists(filepath))
+                    File.Delete(filepath);
+
+                StreamWriter sw = new StreamWriter(filepath);
+                JsonWriter jw = new JsonTextWriter(sw);
+
+                foreach (object o in data)
+                {
+                    js.Serialize(jw, o);
+                }
+
+                jw.Close();
+                sw.Close();
+
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
-        
+
     }
 }

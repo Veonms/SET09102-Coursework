@@ -16,12 +16,12 @@ namespace BusinessLayer
 
             if (values.Contains("SIR"))
             {
-                for (int i = 0; i < values.Length-1; i++)
+                for (int i = 0; i < values.Length - 1; i++)
                 {
-                    if (values[i] == "Sort" && 
-                        values[i+1] == "Code")
+                    if (values[i].Contains("Sort") &&
+                        values[i + 1].Contains("Code"))
                     {
-                        SIR += "Sort Code: " + values[i+2];
+                        SIR += "Sort Code: " + values[i + 2];
                     }
 
                     else
@@ -29,9 +29,9 @@ namespace BusinessLayer
                 }
                 for (int i = 0; i < values.Length - 1; i++)
                 {
-                    if (values[i] == "Nature" &&
-                        values[i + 1] == "of" &&
-                        values[i+2] == "Incident")
+                    if (values[i].Contains("Nature") &&
+                        values[i + 1].Contains("of") &&
+                        values[i + 2].Contains("Incident"))
                     {
                         SIR += "\nNature of Incident: " + values[i + 3];
                     }
@@ -122,17 +122,17 @@ namespace BusinessLayer
         {
             List<string> messages = new List<string>();
 
-            foreach (KeyValuePair<string,SMS> pair in SMS.GetText())
+            foreach (KeyValuePair<string, SMS> pair in SMS.GetText())
             {
                 messages.Add(pair.Value.Header);
                 messages.Add(pair.Value.Body);
             }
-            foreach (KeyValuePair<string,Tweet> pair in Tweet.GetTweet())
+            foreach (KeyValuePair<string, Tweet> pair in Tweet.GetTweet())
             {
                 messages.Add(pair.Value.Header);
                 messages.Add(pair.Value.Body);
             }
-            foreach (KeyValuePair<string,Email> pair in Email.GetEmails())
+            foreach (KeyValuePair<string, Email> pair in Email.GetEmails())
             {
                 messages.Add(pair.Value.Header);
                 messages.Add(pair.Value.Body);
@@ -146,21 +146,24 @@ namespace BusinessLayer
             {
                 if (header.StartsWith("S") &&
                     !SMS.GetText().ContainsKey(header) &&
-                    header.Length == 10)
+                    header.Length == 10 &&
+                    body.Length <= 140)
                 {
                     SMS s = new SMS(header, body);
                     return true;
                 }
                 if (header.StartsWith("E") &&
                     !Email.GetEmails().ContainsKey(header) &&
-                    header.Length == 10)
+                    header.Length == 10 &&
+                    body.Length <= 1024)
                 {
                     Email e = new Email(header, body);
                     return true;
                 }
-                if (header.StartsWith("T") && 
-                    !Tweet.GetTweet().ContainsKey(header) && 
-                    header.Length == 10)
+                if (header.StartsWith("T") &&
+                    !Tweet.GetTweet().ContainsKey(header) &&
+                    header.Length == 10 &&
+                    body.Length <= 140)
                 {
                     Tweet t = new Tweet(header, body);
                     return true;
@@ -183,11 +186,24 @@ namespace BusinessLayer
             {
                 FacadeSingleton fs = FacadeSingleton.GetInstance();
 
-                List<string> data = DisplayData();
+                ArrayList data = new ArrayList();
+                foreach (KeyValuePair<string, SMS> pair in SMS.GetText())
+                {
+                    data.Add(pair.Value);
+                }
+                foreach (KeyValuePair<string,Tweet> pair in Tweet.GetTweet())
+                {
+                    data.Add(pair.Value);
+                }
+                foreach (KeyValuePair<string, Email> pair in Email.GetEmails())
+                {
+                    data.Add(pair.Value);
+                }
+
                 fs.SaveMessages(data);
 
             }
-            catch(Exception)
+            catch (Exception)
             {
                 return false;
             }
@@ -202,9 +218,9 @@ namespace BusinessLayer
                 FacadeSingleton fs = FacadeSingleton.GetInstance();
 
                 List<string> data = fs.LoadMessage(filename);
-                for (int i=0; i<data.Count-1; i += 2)
+                for (int i = 0; i < data.Count - 1; i += 2)
                 {
-                    AddMessage(data[i], data[i+1]);
+                    AddMessage(data[i], data[i + 1]);
                 }
             }
             catch (Exception)
@@ -212,15 +228,6 @@ namespace BusinessLayer
                 return false;
             }
             return true;
-        }
-
-        public void Save()
-        {
-            // Allows acceess to DataLayer
-            FacadeSingleton fs = FacadeSingleton.GetInstance();
-            fs.Save();
-            
-
         }
     }
 }

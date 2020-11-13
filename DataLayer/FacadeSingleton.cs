@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 
@@ -26,9 +27,19 @@ namespace DataLayer
             List<string> data = mh.Load(filename);
             return data;
         }
-        public void SaveMessages(List<string> data)
+        public bool SaveMessages(ArrayList data)
         {
-            mh.Save(data);
+            try
+            {
+                ArrayList exportData = data;
+                mh.Save(exportData);
+                return true;
+            }
+            catch (Exception e)
+            {
+                var error = e;
+                return false;
+            }
         }
 
 
