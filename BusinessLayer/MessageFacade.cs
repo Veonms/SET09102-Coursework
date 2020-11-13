@@ -24,6 +24,7 @@ namespace BusinessLayer
                 else
                     newBody += s + " ";
             }
+            newBody.Trim();
             return newBody;
         }
 
