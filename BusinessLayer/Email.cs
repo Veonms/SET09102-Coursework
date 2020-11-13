@@ -18,20 +18,5 @@ namespace BusinessLayer
         {
             emails.Add(header, this);
         }
-
-        private ArrayList urls = new ArrayList();
-        private ArrayList sirList = new ArrayList();
-
-        public ArrayList URLs
-        {
-            get { return urls; }
-            set { urls = value; }
-        }
-
-        public ArrayList SIRList
-        {
-            get { return sirList; }
-            set { sirList = value; }
-        }
     }
 }
