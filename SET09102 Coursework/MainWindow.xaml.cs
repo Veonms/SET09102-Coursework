@@ -30,27 +30,17 @@ namespace SET09102_Coursework
 
         private void btn_Confirm_Click(object sender, RoutedEventArgs e)
         {
-            if ((bool)chkBox_Import.IsChecked)
+            if ((bool)chkBox_Import.IsChecked &&
+                messageService.LoadMessages(txtbox_File_Name.Text))
             {
-                Boolean success = messageService.LoadMessages(txtbox_File_Name.Text);
-                if (success)
-                {
                     Display display = new Display();
                     display.Show();
                     this.Close();
-                }
             }
+            if (messageService.AddMessage(txtbox_Message_Header.Text, txtbox_Message_Body.Text))
+                MessageBox.Show("Message Added");
             else
-            {
-                if (messageService.AddMessage(txtbox_Message_Header.Text, txtbox_Message_Body.Text))
-                {
-                    MessageBox.Show("Message Added");
-                }
-                else
-                {
-                    MessageBox.Show("Error: Try again");
-                }
-            }
+                MessageBox.Show("Error: Try again");
 
         }
 

@@ -218,6 +218,12 @@ namespace BusinessLayer
                 FacadeSingleton fs = FacadeSingleton.GetInstance();
 
                 List<string> data = fs.LoadMessage(filename);
+
+                if (data.Count() == 0)
+                {
+                    return false;
+                }
+
                 for (int i = 0; i < data.Count - 1; i += 2)
                 {
                     AddMessage(data[i], data[i + 1]);
