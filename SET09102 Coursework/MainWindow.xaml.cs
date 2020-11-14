@@ -33,11 +33,11 @@ namespace SET09102_Coursework
             if ((bool)chkBox_Import.IsChecked &&
                 messageService.LoadMessages(txtbox_File_Name.Text))
             {
-                    Display display = new Display();
-                    display.Show();
-                    this.Close();
+                Display display = new Display();
+                display.Show();
+                this.Close();
             }
-            if (messageService.AddMessage(txtbox_Message_Header.Text, txtbox_Message_Body.Text))
+            else if (messageService.AddMessage(txtbox_Message_Header.Text, txtbox_Message_Body.Text))
                 MessageBox.Show("Message Added");
             else
                 MessageBox.Show("Error: Try again");
