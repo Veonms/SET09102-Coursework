@@ -9,6 +9,33 @@ namespace BusinessLayer
 {
     public class MessageFacade
     {
+        public Dictionary<string, int> GetHashtagList()
+        {
+            Dictionary<string, int> hashtags = new Dictionary<string, int>();
+
+            foreach(KeyValuePair<string, Tweet> pair in Tweet.GetTweet()){
+                string temp = pair.Value.Body.ToString();
+                string[] values = temp.Split(null);
+                for (int i=0; i<values.Length-1; i++)
+                {
+                    if (values[i].StartsWith("#"))
+                    {
+                        if (!hashtags.ContainsKey(values[i]))
+                        {
+                            hashtags.Add(values[i],1);
+                        }
+                        else
+                        {
+                            hashtags[values[i]]++;
+                        }
+
+                    }
+                }
+            }
+
+            return hashtags;
+        }
+
         public string GetSIR(string body)
         {
             string SIR = "";

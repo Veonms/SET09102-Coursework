@@ -1,16 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using BusinessLayer;
 
 namespace SET09102_Coursework
 {
@@ -19,9 +9,23 @@ namespace SET09102_Coursework
     /// </summary>
     public partial class DisplayLists : Window
     {
+        private MessageFacade messageService = new MessageFacade();
         public DisplayLists()
         {
             InitializeComponent();
+
+            Dictionary<string, int> hashtags = messageService.GetHashtagList();
+
+            foreach (KeyValuePair<string,int> pair in hashtags)
+            {
+                txtbox_Hashtags.Text += pair.Key + "(" + pair.Value + ")\n";
+            }
+
+            /*
+            txtbox_Hashtags.Text = messageService.;
+            txtbox_Mentions.Text;
+            txtbox_SIR.Text;
+            txtbox_URL.Text;*/
         }
     }
 }

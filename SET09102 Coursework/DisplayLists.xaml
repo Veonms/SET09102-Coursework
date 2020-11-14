@@ -7,10 +7,14 @@
         mc:Ignorable="d"
         Title="DisplayLists" Height="450" Width="800">
     <Grid>
-        <Label Content="Label" HorizontalAlignment="Left" Margin="594,252,0,0" VerticalAlignment="Top" FontSize="14"/>
-        <Label Content="Label" HorizontalAlignment="Left" Margin="95,252,0,0" VerticalAlignment="Top" FontSize="14"/>
-        <Label Content="Label" HorizontalAlignment="Left" Margin="594,104,0,0" VerticalAlignment="Top" FontSize="14"/>
-        <Label Content="Label" HorizontalAlignment="Left" Margin="95,104,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <Label x:Name="txt_URL" Content="URLs Quarantined" HorizontalAlignment="Left" Margin="478,232,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <Label x:Name="txt_Hashtag" Content="Hashtags" HorizontalAlignment="Left" Margin="43,232,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <Label x:Name="txt_SIR" Content="Significant Incident Report" HorizontalAlignment="Left" Margin="478,51,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <Label x:Name="lbl_Mentions" Content="Mentions List" HorizontalAlignment="Left" Margin="43,42,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <TextBox x:Name="txtbox_URL" HorizontalAlignment="Left" Height="142" Margin="478,261,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="286"/>
+        <TextBox x:Name="txtbox_Mentions" HorizontalAlignment="Left" Height="142" Margin="43,85,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="286"/>
+        <TextBox x:Name="txtbox_Hashtags" HorizontalAlignment="Left" Height="142" Margin="43,261,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="286"/>
+        <TextBox x:Name="txtbox_SIR" HorizontalAlignment="Left" Height="142" Margin="478,85,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="286"/>
 
     </Grid>
 </Window>
