@@ -17,6 +17,7 @@ namespace SET09102_Coursework
             Dictionary<string, int> hashtags = messageService.GetHashtagList();
             List<string> mentions = messageService.GetMentionsList();
             List<string> SIR = messageService.GetSIRList();
+            List<string> URLs = messageService.GetURLList();
 
             foreach (KeyValuePair<string,int> pair in hashtags)
             {
@@ -30,12 +31,10 @@ namespace SET09102_Coursework
             {
                 txtbox_SIR.Text += s + "\n";
             }
-
-            /*
-            txtbox_Hashtags.Text = messageService.;
-            txtbox_Mentions.Text;
-            txtbox_SIR.Text;
-            txtbox_URL.Text;*/
+            foreach (string s in URLs)
+            {
+                txtbox_URL.Text += s + "\n";
+            }
         }
     }
 }

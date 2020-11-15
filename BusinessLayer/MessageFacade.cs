@@ -9,6 +9,21 @@ namespace BusinessLayer
 {
     public class MessageFacade
     {
+        public List<string> GetURLList()
+        {
+            List<string> URLs = new List<string>();
+            foreach(KeyValuePair<string, Email> pair in Email.GetEmails())
+            {
+                List<string> temp = GetUrl(pair.Value.Body);
+
+                foreach (string s in temp)
+                {
+                    URLs.Add(s);
+                }
+            }
+            return URLs;
+        }
+
         public List<string> GetSIRList()
         {
             List<string> SIRList = new List<string>();
