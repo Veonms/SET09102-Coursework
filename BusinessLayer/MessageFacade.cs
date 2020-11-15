@@ -9,7 +9,22 @@ namespace BusinessLayer
 {
     public class MessageFacade
     {
-        public List<string> GetMentions()
+        public List<string> GetSIRList()
+        {
+            List<string> SIRList = new List<string>();
+            foreach (KeyValuePair<string, Email> pair in Email.GetEmails())
+            {
+                string temp = "";
+                temp = GetSIR(pair.Value.Body);
+                if (!temp.Equals(""))
+                {
+                    SIRList.Add(temp);
+                }
+
+            }
+            return SIRList;
+        }
+        public List<string> GetMentionsList()
         {
             List<string> mentions = new List<string>();
 
