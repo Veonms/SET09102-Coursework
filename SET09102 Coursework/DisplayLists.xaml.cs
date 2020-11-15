@@ -15,10 +15,15 @@ namespace SET09102_Coursework
             InitializeComponent();
 
             Dictionary<string, int> hashtags = messageService.GetHashtagList();
+            List<string> mentions = messageService.GetMentions();
 
             foreach (KeyValuePair<string,int> pair in hashtags)
             {
                 txtbox_Hashtags.Text += pair.Key + "(" + pair.Value + ")\n";
+            }
+            foreach(string s in mentions)
+            {
+                txtbox_Mentions.Text += s + "\n";
             }
 
             /*

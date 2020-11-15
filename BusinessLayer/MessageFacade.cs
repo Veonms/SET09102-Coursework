@@ -9,13 +9,42 @@ namespace BusinessLayer
 {
     public class MessageFacade
     {
+        public List<string> GetMentions()
+        {
+            List<string> mentions = new List<string>();
+
+            foreach(KeyValuePair<string, Tweet> pair in Tweet.GetTweet())
+            {
+                string[] values = pair.Value.Body.ToString().Split(null);
+                List<string> temp = new List<string>();
+
+                for (int i=0; i<values.Length-1; i++)
+                {
+                    if (values[i].StartsWith("@") &&
+                        !mentions.Contains(values[i]))
+                    {
+                        temp.Add(values[i]);
+                    }
+                }
+                if (temp.Count > 1)
+                {
+                    for (int i=1; i<temp.Count; i++)
+                    {
+                        mentions.Add(temp[i]);
+                    }
+                }
+            }
+
+            return mentions;
+        }
+
         public Dictionary<string, int> GetHashtagList()
         {
             Dictionary<string, int> hashtags = new Dictionary<string, int>();
 
             foreach(KeyValuePair<string, Tweet> pair in Tweet.GetTweet()){
-                string temp = pair.Value.Body.ToString();
-                string[] values = temp.Split(null);
+                string[] values = pair.Value.Body.ToString().Split(null);
+
                 for (int i=0; i<values.Length-1; i++)
                 {
                     if (values[i].StartsWith("#"))
