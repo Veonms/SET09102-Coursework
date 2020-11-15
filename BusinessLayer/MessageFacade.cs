@@ -9,6 +9,36 @@ namespace BusinessLayer
 {
     public class MessageFacade
     {
+        public string abbreviations(string body)
+        {
+            string message = "";
+
+            string[] temp = body.Split(null);
+
+            foreach (string s in temp)
+            {
+                if (s.ToUpper().Equals(s))
+                {
+                    try
+                    {
+                        FacadeSingleton fs = FacadeSingleton.GetInstance();
+                        Dictionary<string, string> abb = fs.GetAbbreviations();
+                        if (abb.ContainsKey(s))
+                        {
+                            message += s + " <" + abb[s] + "> ";
+                        }
+                    }
+                    catch (Exception)
+                    {
+
+                    }
+                }
+                else
+                    message += s + " ";
+            }
+            return message;
+        }
+
         public List<string> GetURLList()
         {
             List<string> URLs = new List<string>();

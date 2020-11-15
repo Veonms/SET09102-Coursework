@@ -46,7 +46,7 @@ namespace DataLayer
         {
             try
             {
-                string filepath = @".\output.txt";
+                string filepath = "./Data/output.txt";
 
                 // Reference: https://www.youtube.com/watch?v=Ib3jnD158NI 
                 JsonSerializer js = new JsonSerializer();

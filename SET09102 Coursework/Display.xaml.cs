@@ -26,7 +26,7 @@ namespace SET09102_Coursework
                     txtblk_URLHash.Text = null;
                     lbl_messageType.Content = "SMS Text";
                     lbl_messageHeader.Content = messages[index];
-                    txtblk_body.Text = messages[index+1];
+                    txtblk_body.Text = messageService.abbreviations(messages[index + 1]);
                     txtblk_SIGMen.Visibility = Visibility.Hidden;
                     txtblk_URLHash.Visibility = Visibility.Hidden;
                     lbl_URLHash.Visibility = Visibility.Hidden;
@@ -61,7 +61,7 @@ namespace SET09102_Coursework
                     lbl_SIRMen.Visibility = Visibility.Visible;
                     lbl_messageType.Content = "Tweet";
                     lbl_messageHeader.Content = messages[index];
-                    txtblk_body.Text = messages[index + 1];
+                    txtblk_body.Text = messageService.abbreviations(messages[index + 1]);
                     lbl_URLHash.Content = "Hashtags";
                     lbl_SIRMen.Content = "Mentions";
                     foreach (var v in messageService.GetHashtag(messages[index + 1]))

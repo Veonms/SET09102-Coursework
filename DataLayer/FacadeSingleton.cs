@@ -41,6 +41,13 @@ namespace DataLayer
                 return false;
             }
         }
+        public Dictionary<string, string> GetAbbreviations()
+        {
+
+            Dictionary<string, string> abb = al.Load();
+
+            return abb;
+        }
 
 
     }

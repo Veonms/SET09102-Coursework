@@ -5,12 +5,6 @@ VisualStudioVersion = 16.0.30406.217
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PresentationLayer", "SET09102 Coursework\PresentationLayer.csproj", "{4D026E1F-CB36-40DE-899C-81ECF1F928D2}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{50EE6216-8A42-4135-BBBE-E2EFF1003AC4}"
-	ProjectSection(SolutionItems) = preProject
-		SET09102 Coursework\messages.csv = SET09102 Coursework\messages.csv
-		SET09102 Coursework\textwords.csv = SET09102 Coursework\textwords.csv
-	EndProjectSection
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessLayer", "BusinessLayer\BusinessLayer.csproj", "{801CEDB0-FC49-4BA9-AD30-F354E08D6DF8}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataLayer", "DataLayer\DataLayer.csproj", "{2FBED039-4570-48B7-B49C-AE82A0895608}"
