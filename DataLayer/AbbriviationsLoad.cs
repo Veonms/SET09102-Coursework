@@ -24,7 +24,7 @@ namespace DataLayer
                             string temp = "";
                             for (int i=1; i<values.Length; i++)
                             {
-                                temp += i + " ";
+                                temp += values[i] + " ";
                             }
                             textwords.Add(values[0],temp);
                         }
