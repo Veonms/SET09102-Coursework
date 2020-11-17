@@ -36,5 +36,12 @@ namespace SET09102_Coursework
                 txtbox_URL.Text += s + "\n";
             }
         }
+
+        private void btn_Main_Menu_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow main = new MainWindow();
+            main.Show();
+            this.Close();
+        }
     }
 }

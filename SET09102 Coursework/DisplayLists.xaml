@@ -15,6 +15,7 @@
         <TextBox x:Name="txtbox_Mentions" HorizontalAlignment="Left" Height="142" Margin="43,85,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="286"/>
         <TextBox x:Name="txtbox_Hashtags" HorizontalAlignment="Left" Height="142" Margin="43,261,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="286"/>
         <TextBox x:Name="txtbox_SIR" HorizontalAlignment="Left" Height="142" Margin="478,85,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="286"/>
+        <Button x:Name="btn_Main_Menu" Content="Main Menu" HorizontalAlignment="Left" Margin="356,377,0,0" VerticalAlignment="Top" Width="102" Height="26" Click="btn_Main_Menu_Click"/>
 
     </Grid>
 </Window>
