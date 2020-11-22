@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessLayer", "BusinessLa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataLayer", "DataLayer\DataLayer.csproj", "{2FBED039-4570-48B7-B49C-AE82A0895608}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SET09102.UnitTests", "SET09102.UnitTests\SET09102.UnitTests.csproj", "{094B5635-1D1B-4B90-AB9B-D2FDCD09B2FA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{2FBED039-4570-48B7-B49C-AE82A0895608}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2FBED039-4570-48B7-B49C-AE82A0895608}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2FBED039-4570-48B7-B49C-AE82A0895608}.Release|Any CPU.Build.0 = Release|Any CPU
+		{094B5635-1D1B-4B90-AB9B-D2FDCD09B2FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{094B5635-1D1B-4B90-AB9B-D2FDCD09B2FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{094B5635-1D1B-4B90-AB9B-D2FDCD09B2FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{094B5635-1D1B-4B90-AB9B-D2FDCD09B2FA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
