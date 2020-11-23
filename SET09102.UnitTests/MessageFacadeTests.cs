@@ -91,5 +91,17 @@ namespace SET09102.UnitTests
             Assert.IsTrue(list.ContainsKey("#Party") && list["#Party"] == 2 &&
                 list.ContainsKey("#Welcome") && list["#Welcome"] == 1);
         }
+
+        [TestMethod]
+        public void GetMentionsList_NoHashtags_ReturnsEmptyDictionary()
+        {
+            var mfNoHashtags = new MessageFacade();
+
+            mfNoHashtags.AddMessage("T123456789", "@john Everyone welcome Peter to the company");
+
+            var list = mfNoHashtags.GetHashtagList();
+
+            Assert.IsTrue(list.Count == 0);
+        }
     }
 }
