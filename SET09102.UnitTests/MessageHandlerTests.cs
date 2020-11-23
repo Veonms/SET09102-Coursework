@@ -1,13 +1,16 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using DataLayer;
+using System.Collections.Generic;
+using System.Collections;
 
 namespace SET09102.UnitTests
 {
     [TestClass]
-    public class UnitTest1
+    public class MessageHandlerTests
     {
         [TestMethod]
-        public void TestMethod1()
+        public void Load_FileExists_returnsList()
         {
         }
     }

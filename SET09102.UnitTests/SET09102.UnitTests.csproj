@@ -49,11 +49,27 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="EmailTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="MessageHandlerTests.cs" />
+    <Compile Include="MessageFacadeTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BusinessLayer\BusinessLayer.csproj">
+      <Project>{801cedb0-fc49-4ba9-ad30-f354e08d6df8}</Project>
+      <Name>BusinessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataLayer\DataLayer.csproj">
+      <Project>{2fbed039-4570-48b7-b49c-ae82a0895608}</Project>
+      <Name>DataLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SET09102 Coursework\PresentationLayer.csproj">
+      <Project>{4d026e1f-cb36-40de-899c-81ecf1f928d2}</Project>
+      <Name>PresentationLayer</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

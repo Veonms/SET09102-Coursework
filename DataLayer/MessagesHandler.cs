@@ -6,7 +6,7 @@ using System.IO;
 
 namespace DataLayer
 {
-    class MessagesHandler
+    public class MessagesHandler
     {
         public List<string> Load(string filename)
         {
@@ -36,7 +36,6 @@ namespace DataLayer
             }
             catch(Exception)
             {
-                //Display error
                 return data;
             }
             return data;
