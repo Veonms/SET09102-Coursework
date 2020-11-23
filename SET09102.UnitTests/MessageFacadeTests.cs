@@ -54,5 +54,17 @@ namespace SET09102.UnitTests
 
             Assert.IsTrue(list.Count == 0);
         }
+
+        [TestMethod]
+        public void GetMentionsList_MentionsExists_ReturnsList()
+        {
+            var mfMentionsExist = new MessageFacade();
+
+            mfMentionsExist.AddMessage("T123456789", "@john Everyone welcome @Peter to the company");
+
+            var list = mfMentionsExist.GetMentionsList();
+
+            Assert.IsTrue(list.Count == 1 && list.Contains("@Peter"));
+        }
     }
 }
