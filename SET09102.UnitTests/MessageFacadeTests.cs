@@ -103,5 +103,16 @@ namespace SET09102.UnitTests
 
             Assert.IsTrue(list.Count == 0);
         }
+        
+        [TestMethod]
+        public void GetSir_SIRExists_ReturnsSIR()
+        {
+            var mfSIRExists = new MessageFacade();
+
+
+            var result = mfSIRExists.GetSIR("SIR 20/08/2020 Sort Code: 24-25-63 Nature of Incident: Theft Hello John.Theres been a break in. Can you look at the CCTV. Thanks");
+
+            Assert.AreEqual(result, "Sort Code: 24-25-63\nNature of Incident: Theft");
+        }
     }
 }
