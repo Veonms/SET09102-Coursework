@@ -78,5 +78,18 @@ namespace SET09102.UnitTests
 
             Assert.IsTrue(list.Count == 0);
         }
+
+        [TestMethod]
+        public void GetHashtagList_HashtagExists_ReturnsList()
+        {
+            var mfHashtagExists = new MessageFacade();
+
+            mfHashtagExists.AddMessage("T123456789", "@john Everyone welcome Peter to the company #Party #Party #Welcome ");
+
+            var list = mfHashtagExists.GetHashtagList();
+
+            Assert.IsTrue(list.ContainsKey("#Party") && list["#Party"] == 2 &&
+                list.ContainsKey("#Welcome") && list["#Welcome"] == 1);
+        }
     }
 }
