@@ -105,7 +105,7 @@ namespace SET09102.UnitTests
         }
         
         [TestMethod]
-        public void GetSir_SIRExists_ReturnsSIR()
+        public void GetSIR_SIRExists_ReturnsSIR()
         {
             var mfSIRExists = new MessageFacade();
 
@@ -113,6 +113,26 @@ namespace SET09102.UnitTests
             var result = mfSIRExists.GetSIR("SIR 20/08/2020 Sort Code: 24-25-63 Nature of Incident: Theft Hello John.Theres been a break in. Can you look at the CCTV. Thanks");
 
             Assert.AreEqual(result, "Sort Code: 24-25-63\nNature of Incident: Theft");
+        }
+
+        [TestMethod]
+        public void GetSIR_NoSIRs_ReturnsEmptyString()
+        {
+            var mfSIRExists = new MessageFacade();
+
+            var result = mfSIRExists.GetSIR("Hi Peter. Can you forward the minutes from todays meeting. Thanks");
+
+            Assert.AreEqual(result, "");
+        }
+
+        [TestMethod]
+        public void CheckURL_URLExists_ReturnsMessageWithURLQuarantined()
+        {
+            var mfURLExists = new MessageFacade();
+
+            var result = mfURLExists.checkURL("Dave check out this site https://google.com");
+
+            Assert.AreEqual(result, "Dave check out this site <URL Quarantined>");
         }
     }
 }

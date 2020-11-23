@@ -174,8 +174,7 @@ namespace BusinessLayer
                 else
                     newBody += s + " ";
             }
-            newBody.Trim();
-            return newBody;
+            return newBody.Trim();
         }
 
         public List<string> GetUrl(string body)
