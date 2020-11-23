@@ -42,5 +42,17 @@ namespace SET09102.UnitTests
 
             Assert.IsTrue(list.Count > 0);
         }
+
+        [TestMethod]
+        public void GetSIRList_NoSIRs_ReturnsEmptyList()
+        {
+            var mfSIRExists = new MessageFacade();
+
+            mfSIRExists.AddMessage("E123456789", "Hi Peter. Can you forward the minutes from todays meeting. Thanks");
+
+            var list = mfSIRExists.GetSIRList();
+
+            Assert.IsTrue(list.Count == 0);
+        }
     }
 }
