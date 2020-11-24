@@ -12,7 +12,7 @@ namespace SET09102_Coursework
         public Display()
         {
             InitializeComponent();
-            changes();
+            changes(); // Calls method changes
         }
         
         public void changes()
@@ -20,38 +20,39 @@ namespace SET09102_Coursework
             try
             {
                 List<string> messages = messageService.DisplayData();
-                if (messages[index].StartsWith("S"))
+
+                if (messages[index].StartsWith("S")) // Checks if message is an SMS
                 {
-                    txtblk_SIGMen.Text = null;
-                    txtblk_URLHash.Text = null;
-                    lbl_messageType.Content = "SMS Text";
-                    lbl_messageHeader.Content = messages[index];
-                    txtblk_body.Text = messageService.abbreviations(messages[index + 1]);
-                    txtblk_SIGMen.Visibility = Visibility.Hidden;
-                    txtblk_URLHash.Visibility = Visibility.Hidden;
-                    lbl_URLHash.Visibility = Visibility.Hidden;
-                    lbl_SIRMen.Visibility = Visibility.Hidden;
+                    txtblk_SIGMen.Text = null; // Makes sure the textblock is empty
+                    txtblk_URLHash.Text = null;// Makes sure the textblock is empty
+                    lbl_messageType.Content = "SMS Text"; // Displays SMS Text
+                    lbl_messageHeader.Content = messages[index]; // Displays the Heeader of the message
+                    txtblk_body.Text = messageService.abbreviations(messages[index + 1]); // Displays the body of the message with abbriviations
+                    txtblk_SIGMen.Visibility = Visibility.Hidden; // Hides Textblock
+                    txtblk_URLHash.Visibility = Visibility.Hidden; // Hides Textblock
+                    lbl_URLHash.Visibility = Visibility.Hidden; // Hides label 
+                    lbl_SIRMen.Visibility = Visibility.Hidden; // Hides label
                 }
                 if (messages[index].StartsWith("E"))
                 {
-                    txtblk_SIGMen.Text = null;
-                    txtblk_URLHash.Text = null;
-                    txtblk_SIGMen.Visibility = Visibility.Visible;
-                    txtblk_URLHash.Visibility = Visibility.Visible;
-                    lbl_URLHash.Visibility = Visibility.Visible;
-                    lbl_SIRMen.Visibility = Visibility.Visible;
-                    lbl_messageType.Content = "Email";
-                    lbl_messageHeader.Content = messages[index];
-                    txtblk_body.Text = messageService.checkURL(messages[index + 1]);
-                    lbl_URLHash.Content = "URLs Quarantined";
-                    lbl_SIRMen.Content = "Significant Incedent Report";
-                    txtblk_SIGMen.Text = messageService.GetSIR(messages[index + 1]);
+                    txtblk_SIGMen.Text = null; // Makes sure the textblock is empty
+                    txtblk_URLHash.Text = null; // Makes sure the textblock is empty
+                    txtblk_SIGMen.Visibility = Visibility.Visible; // Makes textblock visable
+                    txtblk_URLHash.Visibility = Visibility.Visible;// Makes textblock visable
+                    lbl_URLHash.Visibility = Visibility.Visible;// Makes label visable
+                    lbl_SIRMen.Visibility = Visibility.Visible;// Makes label visable
+                    lbl_messageType.Content = "Email"; // Displays Email
+                    lbl_messageHeader.Content = messages[index]; // Displays the Heeader of the message
+                    txtblk_body.Text = messageService.checkURL(messages[index + 1]);// Displays the body of the message with URLs removed
+                    lbl_URLHash.Content = "URLs Quarantined"; // Displays URLs Quarantines
+                    lbl_SIRMen.Content = "Significant Incedent Report"; // Displays Significant Incedent Report
+                    txtblk_SIGMen.Text = messageService.GetSIR(messages[index + 1]); // Displays the SIR in the textblock
                     foreach (var v in messageService.GetUrl(messages[index + 1]))
                     {
-                        txtblk_URLHash.Text += (v + " ");
+                        txtblk_URLHash.Text += (v + " "); // 
                     }
                 }
-                if (messages[index].StartsWith("T"))
+                if (messages[index].StartsWith("T")) // Checks if the messagee is a Tweet
                 {
                     txtblk_SIGMen.Text = null;
                     txtblk_URLHash.Text = null;
@@ -85,34 +86,34 @@ namespace SET09102_Coursework
 
         private void btn_Main_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.Show();
-            this.Close();
+            MainWindow mainWindow = new MainWindow(); // Creates new window
+            mainWindow.Show(); // Displays new window
+            this.Close(); // Closes current window
         }
 
         private void btn_Export_Click(object sender, RoutedEventArgs e)
         {
             if (!messageService.SaveMessages())
             {
-                MessageBox.Show("Error");
+                MessageBox.Show("Error"); // Shows error box
             }
             else
             {
-                DisplayLists displayLists = new DisplayLists();
-                displayLists.Show();
-                this.Close();
+                DisplayLists displayLists = new DisplayLists(); // Creates new window
+                displayLists.Show(); // Displays new window
+                this.Close(); // Closees current window
             }
         }
 
         private void btn_NextMssage_Click(object sender, RoutedEventArgs e)
         {
-            if (index < messageService.DisplayData().Count-2)
+            if (index < messageService.DisplayData().Count-2) 
             {
-                index += 2;
+                index += 2; // Cycles through messages
             }
             else
-                index = 0;
-            changes();
+                index = 0; // Goes back to 0 to allow thee user to cycle through messages
+            changes(); // Changees the display
         }
     }
 }

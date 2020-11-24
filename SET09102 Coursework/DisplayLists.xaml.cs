@@ -21,27 +21,27 @@ namespace SET09102_Coursework
 
             foreach (KeyValuePair<string,int> pair in hashtags)
             {
-                txtbox_Hashtags.Text += pair.Key + "(" + pair.Value + ")\n";
+                txtbox_Hashtags.Text += pair.Key + "(" + pair.Value + ")\n"; // Displays the hashtags and the number of times it was displayed
             }
             foreach (string s in mentions)
             {
-                txtbox_Mentions.Text += s + "\n";
+                txtbox_Mentions.Text += s + "\n"; // Displays the meentions
             }
             foreach (string s in SIR)
             {
-                txtbox_SIR.Text += s + "\n";
+                txtbox_SIR.Text += s + "\n"; // Displays thee Significant Incident Reports
             }
             foreach (string s in URLs)
             {
-                txtbox_URL.Text += s + "\n";
+                txtbox_URL.Text += s + "\n"; // Displays the URLS
             }
         }
 
         private void btn_Main_Menu_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow main = new MainWindow();
-            main.Show();
-            this.Close();
+            MainWindow main = new MainWindow(); // Creates new window
+            main.Show(); // Displays new window
+            this.Close(); // Closes current window
         }
     }
 }
