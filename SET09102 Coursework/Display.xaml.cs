@@ -49,29 +49,29 @@ namespace SET09102_Coursework
                     txtblk_SIGMen.Text = messageService.GetSIR(messages[index + 1]); // Displays the SIR in the textblock
                     foreach (var v in messageService.GetUrl(messages[index + 1]))
                     {
-                        txtblk_URLHash.Text += (v + " "); // 
+                        txtblk_URLHash.Text += (v + " "); // Adds all the hashtags to thee textblock
                     }
                 }
                 if (messages[index].StartsWith("T")) // Checks if the messagee is a Tweet
                 {
-                    txtblk_SIGMen.Text = null;
-                    txtblk_URLHash.Text = null;
-                    txtblk_SIGMen.Visibility = Visibility.Visible;
-                    txtblk_URLHash.Visibility = Visibility.Visible;
-                    lbl_URLHash.Visibility = Visibility.Visible;
-                    lbl_SIRMen.Visibility = Visibility.Visible;
-                    lbl_messageType.Content = "Tweet";
-                    lbl_messageHeader.Content = messages[index];
-                    txtblk_body.Text = messageService.abbreviations(messages[index + 1]);
-                    lbl_URLHash.Content = "Hashtags";
-                    lbl_SIRMen.Content = "Mentions";
+                    txtblk_SIGMen.Text = null; // Makes sure the textblock is empty
+                    txtblk_URLHash.Text = null; // Makes sure the textblock is empty
+                    txtblk_SIGMen.Visibility = Visibility.Visible; // Makes textblock visable
+                    txtblk_URLHash.Visibility = Visibility.Visible; // Makes textblock visable
+                    lbl_URLHash.Visibility = Visibility.Visible; // Makes label visable
+                    lbl_SIRMen.Visibility = Visibility.Visible; // Makes label visable
+                    lbl_messageType.Content = "Tweet"; //Displays Tweet
+                    lbl_messageHeader.Content = messages[index]; // Displays messageHeader
+                    txtblk_body.Text = messageService.abbreviations(messages[index + 1]);// Displays the body of the message with abbriviations
+                    lbl_URLHash.Content = "Hashtags"; // Displays Hashtags
+                    lbl_SIRMen.Content = "Mentions"; // Displays Mentions
                     foreach (var v in messageService.GetHashtag(messages[index + 1]))
                     {
-                        txtblk_URLHash.Text += (v + " ");
+                        txtblk_URLHash.Text += (v + " "); // Adds all the hashtags to the textblock
                     }
                     foreach (var v in messageService.GetMentions(messages[index + 1]))
                     {
-                        txtblk_SIGMen.Text += (v + " ");
+                        txtblk_SIGMen.Text += (v + " "); // Adds all the mentions to the textblock
                     }
                 }
                 else
