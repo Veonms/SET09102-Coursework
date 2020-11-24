@@ -134,29 +134,30 @@ namespace BusinessLayer
 
         public string GetSIR(string body)
         {
-            string SIR = "";
-            string[] values = body.Split(null);
+            string SIR = ""; 
 
-            if (values.Contains("SIR"))
+            string[] values = body.Split(null); // Adds every word from body to array
+
+            if (values.Contains("SIR")) // Checks if any word is SIR (Checking if its an Significant Incident Report)
             {
-                for (int i = 0; i < values.Length - 1; i++)
+                for (int i = 0; i < values.Length - 1; i++) // Will go through looking for the sort code and its value
                 {
                     if (values[i].Contains("Sort") &&
                         values[i + 1].Contains("Code"))
                     {
-                        SIR += "Sort Code: " + values[i + 2];
+                        SIR += "Sort Code: " + values[i + 2]; // Adds value to string
                     }
 
                     else
                         continue;
                 }
-                for (int i = 0; i < values.Length - 1; i++)
+                for (int i = 0; i < values.Length - 1; i++) // Will go through and check for the nature of incident and its value
                 {
                     if (values[i].Contains("Nature") &&
                         values[i + 1].Contains("of") &&
                         values[i + 2].Contains("Incident"))
                     {
-                        SIR += "\nNature of Incident: " + values[i + 3];
+                        SIR += "\nNature of Incident: " + values[i + 3]; // Adds value to string
                     }
 
                     else
@@ -164,130 +165,132 @@ namespace BusinessLayer
                 }
             }
 
-            return SIR;
+            return SIR; // Returns string
         }
         public string checkURL(string body)
         {
             string newBody = "";
-            string[] values = body.Split(null);
+            string[] values = body.Split(null); // Adds every word from the body to an array
 
             foreach (string s in values)
             {
-                if (s.StartsWith("http:") || s.StartsWith("https:"))
+                if (s.StartsWith("http:") || s.StartsWith("https:")) // Checks if the word begins with http: or https:
                 {
-                    newBody += "<URL Quarantined> ";
+                    newBody += "<URL Quarantined> "; // Adds <URL Quarantined> to string
                 }
 
                 else
-                    newBody += s + " ";
+                    newBody += s + " "; // Adds word to string
             }
-            return newBody.Trim();
+            return newBody.Trim(); // Returns string with any leeading or trailing whitespace removed
         }
 
         public List<string> GetUrl(string body)
         {
             List<string> urls = new List<string>();
 
-            string[] values = body.Split(null);
+            string[] values = body.Split(null); // Adds all words to an array
 
             foreach (string s in values)
             {
-                if (s.StartsWith("http:") || s.StartsWith("https:"))
+                if (s.StartsWith("http:") || s.StartsWith("https:")) // Checks if the word begins with http: or https:
                 {
-                    urls.Add(s);
+                    urls.Add(s); // Adds url to list
                 }
 
                 else
                     continue;
             }
 
-            return urls;
+            return urls; // Returns list
         }
 
         public List<string> GetMentions(string body)
         {
             List<string> mentions = new List<string>();
-            string[] values = body.Split(null);
 
-            foreach (string s in values)
+            string[] values = body.Split(null); // Adds all words to array
+
+            foreach (string s in values) // Goees through every word
             {
-                if (s.StartsWith("@"))
+                if (s.StartsWith("@")) // Checks if word begins with "@"
                 {
-                    mentions.Add(s);
+                    mentions.Add(s); // Adds word to list
                 }
 
                 else
                     continue;
             }
-            return mentions;
+            return mentions; // Adds List
         }
 
         public List<string> GetHashtag(string body)
         {
             List<string> hashtag = new List<string>();
-            string[] values = body.Split(null);
 
-            foreach (string s in values)
+            string[] values = body.Split(null); // Adds every word from body to an array
+
+            foreach (string s in values) // Goes through every word
             {
-                if (s.StartsWith("#"))
+                if (s.StartsWith("#")) // Check if the word beings with "#"
                 {
-                    hashtag.Add(s);
+                    hashtag.Add(s); // Adds to list
                 }
 
                 else
                     continue;
             }
-            return hashtag;
+            return hashtag; // Returns list
         }
 
         public List<string> DisplayData()
         {
             List<string> messages = new List<string>();
 
-            foreach (KeyValuePair<string, SMS> pair in SMS.GetText())
+            foreach (KeyValuePair<string, SMS> pair in SMS.GetText()) // Goes through each SMS
             {
-                messages.Add(pair.Value.Header);
-                messages.Add(pair.Value.Body);
+                messages.Add(pair.Value.Header); // Adds header to list
+                messages.Add(pair.Value.Body); // Adds body to list
             }
-            foreach (KeyValuePair<string, Tweet> pair in Tweet.GetTweet())
+            foreach (KeyValuePair<string, Tweet> pair in Tweet.GetTweet()) // Goes through each Tweet
             {
-                messages.Add(pair.Value.Header);
-                messages.Add(pair.Value.Body);
+                messages.Add(pair.Value.Header); // Adds header to list
+                messages.Add(pair.Value.Body); // Adds body to list
             }
-            foreach (KeyValuePair<string, Email> pair in Email.GetEmails())
+            foreach (KeyValuePair<string, Email> pair in Email.GetEmails()) // Goes through each Email
             {
-                messages.Add(pair.Value.Header);
-                messages.Add(pair.Value.Body);
+                messages.Add(pair.Value.Header); // Adds header to list
+                messages.Add(pair.Value.Body); // Adds body to list
             }
-            return messages;
+            return messages; // reeturns list
         }
 
         public Boolean AddMessage(string header, string body)
         {
             try
             {
-                if (header.StartsWith("S") &&
-                    !SMS.GetText().ContainsKey(header) &&
-                    header.Length == 10 &&
-                    body.Length <= 140)
+                if (header.StartsWith("S") && // Checks if thee message is an SMS
+                    !SMS.GetText().ContainsKey(header) && // Checks if message exists
+                    header.Length == 10 && // Checks headre is 10 characters
+                    body.Length <= 140) // checks if body is <= 140 characters
                 {
-                    SMS s = new SMS(header, body);
+                    SMS s = new SMS(header, body); // Adds meessage
                     return true;
                 }
-                if (header.StartsWith("E") &&
-                    !Email.GetEmails().ContainsKey(header) &&
-                    header.Length == 10 &&
-                    body.Length <= 1024)
+                if (header.StartsWith("E") && // Checks if the message is an email
+                    !Email.GetEmails().ContainsKey(header) && // Checks if message exists
+                    header.Length == 10 && // Checks headre is 10 characters
+                    body.Length <= 1024) // checks if body is <= 1024 characters
                 {
-                    Email e = new Email(header, body);
+                    Email e = new Email(header, body); // Adds meessage
                     return true;
                 }
-                if (header.StartsWith("T") &&
-                    !Tweet.GetTweet().ContainsKey(header) &&
-                    header.Length == 10 &&
-                    body.Length <= 140)
+                if (header.StartsWith("T") && // Checks is the message is a tweeet
+                    !Tweet.GetTweet().ContainsKey(header) && // Checks if message exists
+                    header.Length == 10 && // Checks headre is 10 characters
+                    body.Length <= 140) // checks if body is <= 140 characters
                 {
-                    Tweet t = new Tweet(header, body);
+                    Tweet t = new Tweet(header, body); // adds message
                     return true;
                 }
                 else
@@ -306,23 +309,23 @@ namespace BusinessLayer
         {
             try
             {
-                FacadeSingleton fs = FacadeSingleton.GetInstance();
+                FacadeSingleton fs = FacadeSingleton.GetInstance(); // Creates singleton if one doesnt exist
 
                 ArrayList data = new ArrayList();
-                foreach (KeyValuePair<string, SMS> pair in SMS.GetText())
+                foreach (KeyValuePair<string, SMS> pair in SMS.GetText()) // Goes through each SMS
                 {
-                    data.Add(pair.Value);
+                    data.Add(pair.Value); // Adds message
                 }
-                foreach (KeyValuePair<string,Tweet> pair in Tweet.GetTweet())
+                foreach (KeyValuePair<string,Tweet> pair in Tweet.GetTweet()) // Goes through each Tweet
                 {
-                    data.Add(pair.Value);
+                    data.Add(pair.Value); // Adds message
                 }
-                foreach (KeyValuePair<string, Email> pair in Email.GetEmails())
+                foreach (KeyValuePair<string, Email> pair in Email.GetEmails()) // Goes through each Email
                 {
-                    data.Add(pair.Value);
+                    data.Add(pair.Value); // Adds message
                 }
 
-                fs.SaveMessages(data);
+                fs.SaveMessages(data); // Calls SaveMessages method in thee FacadeeSingleton
 
             }
             catch (Exception)
@@ -337,9 +340,9 @@ namespace BusinessLayer
             try
             {
                 // Allows acceess to DataLayer
-                FacadeSingleton fs = FacadeSingleton.GetInstance();
+                FacadeSingleton fs = FacadeSingleton.GetInstance(); // Creates singleton if one doesnt exist
 
-                List<string> data = fs.LoadMessage(filename);
+                List<string> data = fs.LoadMessage(filename);  // Calls LoadMessage from FacadeSingleton and stores the list
 
                 if (data.Count() == 0)
                 {
@@ -348,7 +351,7 @@ namespace BusinessLayer
 
                 for (int i = 0; i < data.Count - 1; i += 2)
                 {
-                    AddMessage(data[i], data[i + 1]);
+                    AddMessage(data[i], data[i + 1]); // Adds all thee messages
                 }
             }
             catch (Exception)
