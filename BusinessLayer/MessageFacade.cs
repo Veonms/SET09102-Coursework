@@ -36,7 +36,7 @@ namespace BusinessLayer
                 else
                     message += s + " ";
             }
-            return message;
+            return message.Trim();
         }
 
         public List<string> GetURLList()

@@ -93,7 +93,7 @@ namespace SET09102.UnitTests
         }
 
         [TestMethod]
-        public void GetMentionsList_NoHashtags_ReturnsEmptyDictionary()
+        public void GetHashtagList_NoHashtags_ReturnsEmptyDictionary()
         {
             var mfNoHashtags = new MessageFacade();
 
@@ -101,9 +101,9 @@ namespace SET09102.UnitTests
 
             var list = mfNoHashtags.GetHashtagList();
 
-            Assert.IsTrue(list.Count == 0);
+            Assert.IsTrue(list.Values.Count == 0);
         }
-        
+
         [TestMethod]
         public void GetSIR_SIRExists_ReturnsSIR()
         {
@@ -128,11 +128,94 @@ namespace SET09102.UnitTests
         [TestMethod]
         public void CheckURL_URLExists_ReturnsMessageWithURLQuarantined()
         {
-            var mfURLExists = new MessageFacade();
+            var mfCheckURLUrlExists = new MessageFacade();
 
-            var result = mfURLExists.checkURL("Dave check out this site https://google.com");
+            var result = mfCheckURLUrlExists.checkURL("Dave check out this site https://google.com");
 
             Assert.AreEqual(result, "Dave check out this site <URL Quarantined>");
+        }
+
+        [TestMethod]
+        public void CheckURL_NoURLExists_ReturnsBodyUnchanged()
+        {
+            var mfCheckURLNoUrlExists = new MessageFacade();
+
+            var result = mfCheckURLNoUrlExists.checkURL("Dave can you send me this weeks rota");
+
+            Assert.AreEqual(result, "Dave can you send me this weeks rota");
+        }
+
+        [TestMethod]
+        public void GetURL_URLExists_ReturnsList()
+        {
+            var mfGetURLUrlExists = new MessageFacade();
+
+            var result = mfGetURLUrlExists.GetUrl("Dave check out this site https://google.com");
+
+            Assert.IsTrue(result.Count == 1 && result.Contains(" https://google.com"));
+        }
+
+        [TestMethod]
+        public void GetURL_noURLExists_ReturnsEmptyList()
+        {
+            var mfGetURLNonEExist = new MessageFacade();
+
+            var result = mfGetURLNonEExist.GetUrl("Dave can you send me this weeks rota");
+
+            Assert.IsTrue(result.Count == 0);
+        }
+
+        [TestMethod]
+        public void GetMentions_MentionsExist_ReturnsList()
+        {
+            var mfGetMentionsMentionsExist = new MessageFacade();
+
+            var result = mfGetMentionsMentionsExist.GetMentions("@John Hey @Dave. Can you send me the rota");
+
+            Assert.IsTrue(result.Count ==1 && result.Contains("@Dave"));
+        }
+
+        [TestMethod]
+        public void GetMentions_NoMentionsExist_ReturnsEmptyList()
+        {
+            var mfGetMentionsNoMentionsExist = new MessageFacade();
+
+            var result = mfGetMentionsNoMentionsExist.GetMentions("@John Hey Dav can you send me the rota");
+            
+            Assert.IsTrue(result.Count == 0);
+        }
+
+        [TestMethod]
+        public void GetHashtag_HashtagExists_ReturnsList()
+        {
+            var mfGetHashtagHashtagExists = new MessageFacade();
+
+            var result = mfGetHashtagHashtagExists.GetHashtag("@John Hey Dav can you send me the #rota ");
+
+            Assert.IsTrue(result.Contains("#rota") && result.Count == 1);
+        }
+
+        [TestMethod]
+        public void GetHashtag_NoHashtagExists_ReturnsEmptyList()
+        {
+            var mfGetHashtagNoHashtagExists = new MessageFacade();
+
+            var result = mfGetHashtagNoHashtagExists.GetHashtag("@John Hey Dave can you send me the rota");
+
+            Assert.IsTrue(result.Count == 0);
+        }
+
+        [TestMethod]
+        public void DisplayData_MessageeObjectsExist_ReturnsListOfHeaderAndBody()
+        {
+            var mfDisplayData = new MessageFacade();
+
+            mfDisplayData.AddMessage("S123456789","Hello David");
+            mfDisplayData.AddMessage("T123456789", "@ John Hello David");
+
+            var result = mfDisplayData.DisplayData();
+
+            Assert.IsTrue(result.Count == 4);
         }
     }
 }
