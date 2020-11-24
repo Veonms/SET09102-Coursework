@@ -11,7 +11,7 @@ namespace DataLayer
         public List<string> Load(string filename)
         {
             List<string> data = new List<string>();
-            string path = "./Data/" + filename;
+            string path = "./Data/" + filename; // Opens file in folder, Data
             try
             {
                 using (var r = new StreamReader(path))
@@ -24,7 +24,7 @@ namespace DataLayer
                             string[] values = line.Split(','); // Removes comma and appends to array
                             foreach (var value in values)
                             {
-                                data.Add(value);
+                                data.Add(value); // Adds word to list
                             }
                         }
                         catch (Exception)
@@ -49,17 +49,19 @@ namespace DataLayer
 
                 // Reference: https://www.youtube.com/watch?v=Ib3jnD158NI 
                 JsonSerializer js = new JsonSerializer();
-                if (File.Exists(filepath))
+                if (File.Exists(filepath)) // Checks if file exists, if so, deletees it
                     File.Delete(filepath);
 
+                // Used for persistance
                 StreamWriter sw = new StreamWriter(filepath);
                 JsonWriter jw = new JsonTextWriter(sw);
 
                 foreach (object o in data)
                 {
-                    js.Serialize(jw, o);
+                    js.Serialize(jw, o); // Serialises each object
                 }
 
+                // Closes both writers
                 jw.Close();
                 sw.Close();
 

@@ -11,7 +11,7 @@ namespace DataLayer
 
         private FacadeSingleton() { }
 
-        public static FacadeSingleton GetInstance()
+        public static FacadeSingleton GetInstance() // Checks if Singleton exists
         {
             if (reference == null)
                 reference = new FacadeSingleton();
@@ -22,31 +22,30 @@ namespace DataLayer
         private AbbriviationsLoad al = new AbbriviationsLoad();
         private MessagesHandler mh = new MessagesHandler();
 
-        public List<string> LoadMessage(string filename)
+        public List<string> LoadMessage(string filename) 
         {
-            List<string> data = mh.Load(filename);
-            return data;
+            List<string> data = mh.Load(filename); //Calls Load from MessagesHandler and stores list
+            return data; // returns list
         }
         public bool SaveMessages(ArrayList data)
         {
             try
             {
                 ArrayList exportData = data;
-                mh.Save(exportData);
+                mh.Save(exportData); // Calls Save from MessagesHandler
                 return true;
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                var error = e;
                 return false;
             }
         }
         public Dictionary<string, string> GetAbbreviations()
         {
 
-            Dictionary<string, string> abb = al.Load();
+            Dictionary<string, string> abb = al.Load();//Calls Load from Abbriviations and stores dictionary
 
-            return abb;
+            return abb; // returns dictionary
         }
 
 
