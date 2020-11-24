@@ -211,11 +211,59 @@ namespace SET09102.UnitTests
             var mfDisplayData = new MessageFacade();
 
             mfDisplayData.AddMessage("S123456789","Hello David");
-            mfDisplayData.AddMessage("T123456789", "@ John Hello David");
+            mfDisplayData.AddMessage("T123456789", "@John Hello David");
 
             var result = mfDisplayData.DisplayData();
 
             Assert.IsTrue(result.Count == 4);
+        }
+
+        [TestMethod]
+        public void AddMessage_SMSExists_CreatesSMS()
+        {
+            var mfAddMessageSMS = new MessageFacade();
+
+            mfAddMessageSMS.AddMessage("S123456789","Message 1");
+            mfAddMessageSMS.AddMessage("S123456782329", "Message 2");
+            mfAddMessageSMS.AddMessage("S123456789", "Message 3");
+            mfAddMessageSMS.AddMessage("S123789", "Message 4");
+            mfAddMessageSMS.AddMessage("M123456789", "Message 5");
+
+            var result = mfAddMessageSMS.DisplayData();
+
+            Assert.IsTrue(result.Count == 2);
+        }
+
+        [TestMethod]
+        public void AddMessage_EmailExists_CreatesEmail()
+        {
+            var mfAddMessageEmail = new MessageFacade();
+
+            mfAddMessageEmail.AddMessage("E123456789", "Message 1");
+            mfAddMessageEmail.AddMessage("e123456782329", "Message 2");
+            mfAddMessageEmail.AddMessage("E123456789", "Message 3");
+            mfAddMessageEmail.AddMessage("E123789", "Message 4");
+            mfAddMessageEmail.AddMessage("A123456789", "Message 5");
+
+            var result = mfAddMessageEmail.DisplayData();
+
+            Assert.IsTrue(result.Count == 2);
+        }
+
+        [TestMethod]
+        public void AddMessage_TweetExists_CreatesTweet()
+        {
+            var mfAddMessageTweet = new MessageFacade();
+
+            mfAddMessageTweet.AddMessage("T123456789", "Message 1");
+            mfAddMessageTweet.AddMessage("T123456782329", "Message 2");
+            mfAddMessageTweet.AddMessage("T123456789", "Message 3");
+            mfAddMessageTweet.AddMessage("T123789", "Message 4");
+            mfAddMessageTweet.AddMessage("Z123456789", "Message 5");
+
+            var result = mfAddMessageTweet.DisplayData();
+
+            Assert.IsTrue(result.Count == 2);
         }
     }
 }
