@@ -11,13 +11,14 @@ namespace BusinessLayer
     {
         public string abbreviations(string body)
         {
-            string message = "";
+            string message = ""; // Creates empty string
 
-            string[] temp = body.Split(null);
+            string[] temp = body.Split(null); // Creates empty array
 
+            // Checks every word to see if it is an abbriviation (abb.). If so adds the expanded version in <>
             foreach (string s in temp)
             {
-                if (s.ToUpper().Equals(s))
+                if (s.ToUpper().Equals(s)) // Checks if the abb. is uppercase if not add message to string
                 {
                     try
                     {
@@ -25,7 +26,7 @@ namespace BusinessLayer
                         Dictionary<string, string> abb = fs.GetAbbreviations();
                         if (abb.ContainsKey(s))
                         {
-                            message += s + " <" + abb[s] + "> ";
+                            message += s + " <" + abb[s] + "> "; // Adds abb. and expanded abb. to string
                         }
                     }
                     catch (Exception)
@@ -34,95 +35,101 @@ namespace BusinessLayer
                     }
                 }
                 else
-                    message += s + " ";
+                    message += s + " "; // Adds word to string
             }
-            return message.Trim();
+            return message.Trim(); // Returns message with any leading or trailing whitespace removed
         }
 
         public List<string> GetURLList()
         {
             List<string> URLs = new List<string>();
-            foreach(KeyValuePair<string, Email> pair in Email.GetEmails())
+
+            foreach(KeyValuePair<string, Email> pair in Email.GetEmails()) // Checks every email
             {
-                List<string> temp = GetUrl(pair.Value.Body);
+                List<string> temp = GetUrl(pair.Value.Body); // Uses method GetUrl to find urls within the body
 
                 foreach (string s in temp)
                 {
-                    URLs.Add(s);
+                    URLs.Add(s); // Adds URL to list
                 }
             }
-            return URLs;
+            return URLs; // Returns list
         }
 
         public List<string> GetSIRList()
         {
             List<string> SIRList = new List<string>();
-            foreach (KeyValuePair<string, Email> pair in Email.GetEmails())
+
+            foreach (KeyValuePair<string, Email> pair in Email.GetEmails()) // Checks every email
             {
-                string temp = "";
-                temp = GetSIR(pair.Value.Body);
-                if (!temp.Equals(""))
+                string temp = ""; // Creates empty string
+
+                temp = GetSIR(pair.Value.Body); // Uses the GetSIR method to get all the Significant Incident Reports
+
+                if (!temp.Equals("")) // If SIR exists add to list
                 {
                     SIRList.Add(temp);
                 }
 
             }
-            return SIRList;
+            return SIRList; // Returns list
         }
         public List<string> GetMentionsList()
         {
             List<string> mentions = new List<string>();
 
-            foreach(KeyValuePair<string, Tweet> pair in Tweet.GetTweet())
+            foreach(KeyValuePair<string, Tweet> pair in Tweet.GetTweet()) // Checks every Tweet
             {
-                string[] values = pair.Value.Body.ToString().Split(null);
+                string[] values = pair.Value.Body.ToString().Split(null); // Removes the body from the tweet and adds each word to array
+
                 List<string> temp = new List<string>();
 
-                for (int i=0; i<values.Length-1; i++)
+                for (int i=0; i<values.Length-1; i++) // Checks every word to see if the word begins with "@"
                 {
-                    if (values[i].StartsWith("@") &&
+                    if (values[i].StartsWith("@") && // If the word begins with "@" and does not already exist in the list
                         !mentions.Contains(values[i]))
                     {
-                        temp.Add(values[i]);
+                        temp.Add(values[i]); // Adds word
                     }
                 }
                 if (temp.Count > 1)
                 {
                     for (int i=1; i<temp.Count; i++)
                     {
-                        mentions.Add(temp[i]);
+                        mentions.Add(temp[i]); // Adds all the mentions except the first as that is the user how sent the Tweet
                     }
                 }
             }
 
-            return mentions;
+            return mentions; // Returns list
         }
 
         public Dictionary<string, int> GetHashtagList()
         {
             Dictionary<string, int> hashtags = new Dictionary<string, int>();
 
-            foreach(KeyValuePair<string, Tweet> pair in Tweet.GetTweet()){
-                string[] values = pair.Value.Body.ToString().Split(null);
+            foreach(KeyValuePair<string, Tweet> pair in Tweet.GetTweet()) // Goes through every Tweet
+            { 
+                string[] values = pair.Value.Body.ToString().Split(null); // Adds all words from body to array
 
                 for (int i=0; i<values.Length-1; i++)
                 {
-                    if (values[i].StartsWith("#"))
+                    if (values[i].StartsWith("#")) // If the word begins with "#"
                     {
-                        if (!hashtags.ContainsKey(values[i]))
+                        if (!hashtags.ContainsKey(values[i])) // Checks if hashtag doesnt exists
                         {
-                            hashtags.Add(values[i],1);
+                            hashtags.Add(values[i],1); // Adds hashtag to dictionary with thee value of 1
                         }
                         else
                         {
-                            hashtags[values[i]]++;
+                            hashtags[values[i]]++; // Adds 1 to the value of the hashtag, stored in the dictionary
                         }
 
                     }
                 }
             }
 
-            return hashtags;
+            return hashtags; // returns dictionary
         }
 
         public string GetSIR(string body)

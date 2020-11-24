@@ -5,10 +5,12 @@ using System.Text;
 
 namespace BusinessLayer
 {
-    public class Tweet : Message
+    public class Tweet : Message // Inherits from Message
     {
+        // Creates private Dictionary
         private static Dictionary<string, Tweet> tweets = new Dictionary<string, Tweet>();
 
+        // Allows the dictionary to be accessed. Returns dictionary
         public static Dictionary<string, Tweet> GetTweet()
         {
             return tweets;
@@ -18,21 +20,5 @@ namespace BusinessLayer
         {
             tweets.Add(header, this);
         }
-
-        private ArrayList hashtag = new ArrayList();
-        private ArrayList mentions = new ArrayList();
-
-        public ArrayList Hashtag
-        {
-            get { return hashtag; }
-            set { hashtag = value; }
-        }
-        public ArrayList Mentions
-        {
-            get { return mentions; }
-            set { mentions = value; }
-        }
-
-
     }
 }
