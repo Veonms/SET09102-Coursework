@@ -9,6 +9,4 @@
 	    <HintPath>..\..\..\..\..\.nuget\packages\newtonsoft.json\12.0.3\lib\portable-net45+win8+wp8+wpa81\Newtonsoft.Json.dll</HintPath>
 	  </Reference>
 	</ItemGroup>
-
-
 </Project>
